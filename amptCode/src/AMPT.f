@@ -1,3 +1,4 @@
+c.....driver program for A Multi-Phase Transport model
       PROGRAM AMPT
       double precision xmp, xmu, alpha, rscut2, cutof2, dshadow
       double precision smearp,smearh,dpcoal,drcoal,ecritl
@@ -12,12 +13,15 @@
       COMMON /smearz/smearp,smearh
       COMMON/RNDF77/NSEED
       common/anim/nevent,isoft,isflag,izpc
+c     parton coalescence radii in case of string melting:
       common /coal/dpcoal,drcoal,ecritl
       common/snn/efrm,npart1,npart2,epsiPz,epsiPt,PZPROJ,PZTARG
+c     initialization value for parton cascade:      
       common /para2/ xmp, xmu, alpha, rscut2, cutof2
       common /para7/ ioscar,nsmbbbar,nsmmeson
       common /para8/ idpert,npertd,idxsec
       common /rndm3/ iseedp
+c     initialization value for hadron cascade:
       COMMON /RUN/ NUM
       common/input1/ MASSPR,MASSTA,ISEED,IAVOID,DT
       COMMON /INPUT2/ ILAB, MANYB, NTMAX, ICOLL, INSYS, IPOT, MODE, 
@@ -29,12 +33,16 @@
       common/embed/iembed,nsembd,pxqembd,pyqembd,xembd,yembd,
      1     psembd,tmaxembd,phidecomp
       common/cmsflag/dshadow,ishadow
+clin-2/2012 allow random orientation of reaction plane:
+c$$$      反映平面的随机方向
       common /phiHJ/iphirp,phiRP
       EXTERNAL HIDATA, PYDATA, LUDATA, ARDATA, PPBDAT, zpcbdt
       SAVE   
+c$$$      读入input.ampt的初始化参数
       OPEN (24, FILE = 'input.ampt', STATUS = 'UNKNOWN')
       OPEN (12, FILE = 'ana/version', STATUS = 'UNKNOWN')
       READ (24, *) EFRM
+c     format-read characters (for ALPHA compilers):
       READ (24, 111) FRAME
       READ (24, 111) PROJ
       READ (24, 111) TARG

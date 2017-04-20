@@ -1,0 +1,166 @@
+ 
+           ##################################################
+           #      AMPT (A Multi-Phase Transport) model      #
+           #          Version 2.26t7 (StringMelting)        #
+           #               10/28/2016                       #
+           ##################################################
+            
+ # Read in NSEED in HIJING at run time (e.g. 20030819):
+ #   read in:     10134820
+
+
+          **************************************************
+          *     |      |       _______      /  ------/     *
+          *   ----- ------     |_____|     /_/     /       *
+          *    |||    /        |_____|      /    / |       *
+          *    /| |  /_/       /_______    /_  /    |      *
+          *   / |     / /     /  /  / |        -------     *
+          *     |    / /|       /  /  |     /     |        *
+          *     |   / /  |     /  /  _|    /   -------     *
+          *                                                *
+          **************************************************
+                                HIJING                      
+                 Heavy Ion Jet INteraction Generator        
+                                  by                        
+                      X. N. Wang  and  M. Gyulassy           
+                       Lawrence Berkeley Laboratory           
+
+
+     MDCY(C221,1)   changed from              1 to              0
+     MDCY(C313,1)   changed from              1 to              0
+     MDCY(C-313,1)  changed from              0 to              0
+     MDCY(C323,1)   changed from              1 to              0
+     MDCY(C-323,1)  changed from              0 to              0
+     MDCY(C311,1)   changed from              1 to              0
+     MDCY(C-311,1)  changed from              0 to              0
+     MDCY(C1114,1)  changed from              1 to              0
+     MDCY(C2114,1)  changed from              1 to              0
+     MDCY(C2214,1)  changed from              1 to              0
+     MDCY(C2224,1)  changed from              1 to              0
+     MDCY(C-1114,1) changed from              0 to              0
+     MDCY(C-2114,1) changed from              0 to              0
+     MDCY(C-2214,1) changed from              0 to              0
+     MDCY(C-2224,1) changed from              0 to              0
+     MDCY(C213,1)   changed from              1 to              0
+     MDCY(C-213,1)  changed from              0 to              0
+     MDCY(C113,1)   changed from              1 to              0
+     MDCY(C223,1)   changed from              1 to              0
+     MDCY(C333,1)   changed from              1 to              0
+     MDCY(C111,1)   changed from              1 to              0
+     MDCY(C310,1)   changed from              1 to              0
+     MDCY(C411,1)   changed from              1 to              0
+     MDCY(C-411,1)  changed from              0 to              0
+     MDCY(C421,1)   changed from              1 to              0
+     MDCY(C-421,1)  changed from              0 to              0
+     MDCY(C431,1)   changed from              1 to              0
+     MDCY(C-431,1)  changed from              0 to              0
+     MDCY(C511,1)   changed from              1 to              0
+     MDCY(C-511,1)  changed from              0 to              0
+     MDCY(C521,1)   changed from              1 to              0
+     MDCY(C-521,1)  changed from              0 to              0
+     MDCY(C531,1)   changed from              1 to              0
+     MDCY(C-531,1)  changed from              0 to              0
+     MDCY(C3122,1)  changed from              1 to              0
+     MDCY(C-3122,1) changed from              0 to              0
+     MDCY(C3112,1)  changed from              1 to              0
+     MDCY(C-3112,1) changed from              0 to              0
+     MDCY(C3212,1)  changed from              1 to              0
+     MDCY(C-3212,1) changed from              0 to              0
+     MDCY(C3222,1)  changed from              1 to              0
+     MDCY(C-3222,1) changed from              0 to              0
+     MDCY(C3312,1)  changed from              1 to              0
+     MDCY(C-3312,1) changed from              0 to              0
+     MDCY(C3322,1)  changed from              1 to              0
+     MDCY(C-3322,1) changed from              0 to              0
+     MDCY(C3334,1)  changed from              1 to              0
+     MDCY(C-3334,1) changed from              0 to              0
+     MDCY(C441,1)   changed from              1 to              0
+     MDCY(C443,1)   changed from              1 to              0
+     MDCY(C413,1)   changed from              1 to              0
+     MDCY(C-413,1)  changed from              0 to              0
+     MDCY(C423,1)   changed from              1 to              0
+     MDCY(C-423,1)  changed from              0 to              0
+     MDCY(C433,1)   changed from              1 to              0
+     MDCY(C-433,1)  changed from              0 to              0
+     MDCY(C4112,1)  changed from              1 to              0
+     MDCY(C-4112,1) changed from              0 to              0
+     MDCY(C4114,1)  changed from              1 to              0
+     MDCY(C-4114,1) changed from              0 to              0
+     MDCY(C4122,1)  changed from              1 to              0
+     MDCY(C-4122,1) changed from              0 to              0
+     MDCY(C4212,1)  changed from              1 to              0
+     MDCY(C-4212,1) changed from              0 to              0
+     MDCY(C4214,1)  changed from              1 to              0
+     MDCY(C-4214,1) changed from              0 to              0
+     MDCY(C4222,1)  changed from              1 to              0
+     MDCY(C-4222,1) changed from              0 to              0
+     MDCY(C4224,1)  changed from              1 to              0
+     MDCY(C-4224,1) changed from              0 to              0
+     MDCY(C4132,1)  changed from              1 to              0
+     MDCY(C-4132,1) changed from              0 to              0
+     MDCY(C4312,1)  changed from              1 to              0
+     MDCY(C-4312,1) changed from              0 to              0
+     MDCY(C4314,1)  changed from              1 to              0
+     MDCY(C-4314,1) changed from              0 to              0
+     MDCY(C4232,1)  changed from              1 to              0
+     MDCY(C-4232,1) changed from              0 to              0
+     MDCY(C4322,1)  changed from              1 to              0
+     MDCY(C-4322,1) changed from              0 to              0
+     MDCY(C4324,1)  changed from              1 to              0
+     MDCY(C-4324,1) changed from              0 to              0
+     MDCY(C4332,1)  changed from              1 to              0
+     MDCY(C-4332,1) changed from              0 to              0
+     MDCY(C4334,1)  changed from              1 to              0
+     MDCY(C-4334,1) changed from              0 to              0
+     MDCY(C551,1)   changed from              1 to              0
+     MDCY(C553,1)   changed from              1 to              0
+     MDCY(C513,1)   changed from              1 to              0
+     MDCY(C-513,1)  changed from              0 to              0
+     MDCY(C523,1)   changed from              1 to              0
+     MDCY(C-523,1)  changed from              0 to              0
+     MDCY(C533,1)   changed from              1 to              0
+     MDCY(C-533,1)  changed from              0 to              0
+     MDCY(C5112,1)  changed from              1 to              0
+     MDCY(C-5112,1) changed from              0 to              0
+     MDCY(C5114,1)  changed from              1 to              0
+     MDCY(C-5114,1) changed from              0 to              0
+     MDCY(C5122,1)  changed from              1 to              0
+     MDCY(C-5122,1) changed from              0 to              0
+     MDCY(C5212,1)  changed from              1 to              0
+     MDCY(C-5212,1) changed from              0 to              0
+     MDCY(C5214,1)  changed from              1 to              0
+     MDCY(C-5214,1) changed from              0 to              0
+     MDCY(C5222,1)  changed from              1 to              0
+     MDCY(C-5222,1) changed from              0 to              0
+     MDCY(C5224,1)  changed from              1 to              0
+     MDCY(C-5224,1) changed from              0 to              0
+          **************************************************
+          *                                                *
+          *         HIJING has been initialized at         *
+          *             Ecm =      20.00 GeV/n             *
+          *                                                *
+          *        for A   ( 12,  6) + A   ( 12,  6)       *
+          **************************************************
+  EVENT            1 , RUN            1
+ #impact parameter,nlop,ncolt=  0.637127519               0          15
+ satisfied:EATT(GeV),NATT,B(fm)=   236.301987              80  0.637127519    
+  
+  EVENT            2 , RUN            1
+ #impact parameter,nlop,ncolt=   1.62714422               0          17
+ satisfied:EATT(GeV),NATT,B(fm)=   236.698898              96   1.62714422    
+  
+  EVENT            3 , RUN            1
+ #impact parameter,nlop,ncolt=  0.780876398               0          17
+  in HJANA1 
+  total number of partons =            0
+  total number of gluons =            0
+  number of independent strings =            0
+  in HJANA2 
+  total number of partons =          190
+  total number of gluons =            0
+  number of independent strings =           89
+ satisfied:EATT(GeV),NATT,B(fm)=   240.892334              92  0.780876398    
+  
+localhost.localdomain
+#  AMPT started at  2017年 04月 10日 星期一 13:48:36 CST
+#  AMPT Program finished at  2017年 04月 10日 星期一 13:48:39 CST

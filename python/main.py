@@ -4,13 +4,6 @@
 """document of the module"""
 
 
-import os
-import sys
-import matplotlib.pyplot as plt
-import numpy as np
-import re
-
-
 def CompareStack(fileline):
     """
     return the list about the subroutine
@@ -93,13 +86,13 @@ def dealWithList(alllist):
               and eachSubroutine[0].split()[1].lower() == "precision"
               and eachSubroutine[0].split()[2].lower() == "function"):
             fileName = eachSubroutine[0].split()[3].lower().split('(')[0]
-        # try:
-        #     writeName = open("./amptSource/" + fileName + ".f", 'w')
-        # except IOError:
-        #     pass
-        # for eachline in eachSubroutine:
-        #     writeName.writelines(eachline + '\n')
-        # writeName.close()
+        try:
+            writeName = open("./comment/" + fileName + ".f", 'w')
+        except IOError:
+            pass
+        for eachline in eachSubroutine:
+            writeName.writelines(eachline + '\n')
+        writeName.close()
 
 
 def dealWith(allList):
@@ -166,14 +159,16 @@ def GetCallSubroutine(fileline):
 def main(file):
     fileobj = open(file)
     fileline = GetEachline(fileobj)
-    # allList = CompareStack(fileline)
-    # dealWithList(allList)
+    allList = CompareStack(fileline)
+    for eachSubroutine in allList:
+        print GetName(eachSubroutine)
+    dealWithList(allList)
     # dealWith(allList)
-    subroutine = GetSubroutine(fileline)
+    # subroutine = GetSubroutine(fileline)
     # GetCallSubroutine(fileline)
-    print
-    for i in subroutine:
-        print i
+    # print
+    # for i in subroutine:
+    #     print i
     fileobj.close()
 
 
