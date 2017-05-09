@@ -47,6 +47,8 @@ c     2/24/03 leptons and photons:
             ptot = sqrt(PX ** 2 + PY ** 2 + pz ** 2)
 clin-9/2012 determine pseudo-rapidity more generally:
 c            eta = 0.5*alog((Ptot+pz+1e-5)/(ptot-pz+1e-5))
+
+
             if((PX**2+PY**2).gt.0.) then
                eta=asinh(PZ/sqrt(PX**2+PY**2))
             else
@@ -56,6 +58,8 @@ c     note that finite precision of HBOOST
 c     would give spectator target nucleons a small but non-zero pz:
                if(abs(pz).le.1e-3) eta=0.
             endif
+
+            
             XMT = SQRT(PX ** 2 + PY ** 2 + XM ** 2)
             DXMT = XMT - XM
 clin-9/2012 determine rapidity more generally:
@@ -77,6 +81,8 @@ c               Y = 0.5 * LOG((EE + PZ +1e-5) / (EE - PZ +1e-5))
 cc               STOP
 ccbzdbg2/15/99end
 c            END IF
+
+
             if(XMT.gt.0.) then
                Y=asinh(PZ/XMT)
             else
@@ -84,6 +90,8 @@ c            END IF
                Y = 1000000.0*sign(1.,PZ)
             endif
 c.....rapidity cut for the rapidity distribution
+
+
             IF (ABS(Y) .GE. 10.0) GOTO 100
 clin-9/26/03 no symmetrization in y (or eta) for ana/*.dat:
 c            IY = 1 + int(ABS(Y) / BY)
@@ -91,24 +99,36 @@ c            Ieta = 1 + int(ABS(eta) / BY)
             IF (ABS(eta) .GE. 10.0) GOTO 100
             IY = 1 + int((Y+10.) / BY)
             Ieta = 1 + int((eta+10.) / BY)
+
+
             IF (ITYP .LT. -1000) THEN
                dy1ntb(IY) = dy1ntb(IY) - 1.0
             END IF
+
+
             IF (ITYP .GT. 1000) THEN
                dy1ntb(IY) = dy1ntb(IY) + 1.0
             END IF
+
+
             IF (ITYP .EQ. -2212) THEN
                dy1ntp(IY) = dy1ntp(IY) - 1.0
             END IF
+
+
             IF (ITYP .EQ. 2212) THEN
                dy1ntp(IY) = dy1ntp(IY) + 1.0
             END IF
 c            IF (ITYP .EQ. -211 .OR. ITYP .EQ. -321 .OR.
 c     &         ITYP .EQ. -2212) THEN
+
+
             IF (ITYP .EQ. -2112) THEN
                DY1HM(IY) = DY1HM(IY) + 1.0
             END IF
 c
+
+
             IF (LUCHGE(ITYP).ne.0) THEN
                DY1CH(IY) = DY1CH(IY) + 1.0
                DE1CH(Ieta) = DE1CH(Ieta) + 1.0
@@ -118,77 +138,125 @@ c
                endif
             END IF
 cbz3/17/99
+
+
             IF ((ITYP .GE. 100 .AND. ITYP .LT. 1000) .OR. 
      &         (ITYP .GT. -1000 .AND. ITYP .LE. -100)) THEN
                dy1msn(IY) = dy1msn(IY) + 1.0
             END IF
+
+
             IF (ITYP .EQ. 211) THEN
                DY1PIP(IY) = DY1PIP(IY) + 1.0
             END IF
+
+
             IF (ITYP .EQ. -211) THEN
                DY1PIM(IY) = DY1PIM(IY) + 1.0
             END IF
+
+
             IF (ITYP .EQ. 111) THEN
                DY1PI0(IY) = DY1PI0(IY) + 1.0
             END IF
+
+
             IF (ITYP .EQ. 2212) THEN
                DY1PR(IY) = DY1PR(IY) + 1.0
             END IF
+
+
             IF (ITYP .EQ. -2212) THEN
                DY1PB(IY) = DY1PB(IY) + 1.0
             END IF
 cbz3/17/99 end
+
+
             IF (ITYP .EQ. 321) THEN
                DY1KP(IY) = DY1KP(IY) + 1.0
             END IF
+
+
             IF (ITYP .EQ. -321) THEN
                DY1KM(IY) = DY1KM(IY) + 1.0
             END IF
 clin-4/24/03 evaluate K0L instead of K0S, since sometimes we may decay K0S:
 c            IF (ITYP .EQ. 310) THEN
+
+
             IF (ITYP .EQ. 130) THEN
                DY1K0S(IY) = DY1K0S(IY) + 1.0
             END IF
+
+
             IF (ITYP .EQ. 3122) THEN
                DY1LA(IY) = DY1LA(IY) + 1.0
             END IF
+
+
             IF (ITYP .EQ. -3122) THEN
                DY1LB(IY) = DY1LB(IY) + 1.0
             END IF
+
+
             IF (ITYP .EQ. 333) THEN
                DY1PHI(IY) = DY1PHI(IY) + 1.0
             END IF
 c.....insert rapidity cut for mt spectrum here
+
+
  100        IF (Y .LT. YMT1 .OR. Y .GT. YMT2) GOTO 200
             IF (DXMT .GE. 50.0 * BMT .OR. DXMT .EQ. 0) GOTO 200
             IMT = 1 + int(DXMT / BMT)
+
+
             IF (ITYP .EQ. 211) THEN
                dm1pip(IMT) = dm1pip(IMT) + 1.0 / XMT
             END IF
+
+
             IF (ITYP .EQ. -211) THEN
                dm1pim(IMT) = dm1pim(IMT) + 
      &            1.0 / XMT
             END IF
+
+
             IF (ITYP .EQ. 2212) THEN
                DMT1PR(IMT) = DMT1PR(IMT) + 1.0 / XMT
             END IF
+
+
+
             IF (ITYP .EQ. -2212) THEN
                DMT1PB(IMT) = DMT1PB(IMT) + 1.0 / XMT
             END IF
+
+
             IF (ITYP .EQ. 321) THEN
                DMT1KP(IMT) = DMT1KP(IMT) + 1.0 / XMT
             END IF
+
+            
+
             IF (ITYP .EQ. -321) THEN
                dm1km(IMT) = dm1km(IMT) + 1.0 / XMT
             END IF
 clin-4/24/03:
 c            IF (ITYP .EQ. 310) THEN
+
+
             IF (ITYP .EQ. 130) THEN
                dm1k0s(IMT) = dm1k0s(IMT) + 1.0 / XMT
             END IF
+
+
+            
             IF (ITYP .EQ. 3122) THEN
                DMT1LA(IMT) = DMT1LA(IMT) + 1.0 / XMT
             END IF
+
+
+            
             IF (ITYP .EQ. -3122) THEN
                DMT1LB(IMT) = DMT1LB(IMT) + 1.0 / XMT
             END IF

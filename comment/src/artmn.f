@@ -134,6 +134,9 @@ clin-4/2008 zet() expanded to avoid out-of-bound errors:
      3     0.,0.,0.,0.,0.,0.,0.,0.,0.,-1.,
      4     0.,0.,0.,0.,-1./
       nlast=0
+
+
+
       do 1002 i=1,MAXSTR
          ftsv(i)=0.
          do 1101 irun=1,maxr
@@ -148,6 +151,9 @@ c            plast(i,j)=0.
             plast(j,i)=0.
  1001    continue
  1002 continue
+
+
+      
 *-------------------------------------------------------------------*
 * Input information about the reaction system and contral parameters* 
 *-------------------------------------------------------------------*
@@ -161,8 +167,13 @@ cbz12/2/98end
 *-----------------------------------------------------------------------*
 * read in the table for gengrating the transverse momentum
 * IN THE NN-->DDP PROCESS
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  tablem
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
        call tablem
 * several control parameters, keep them fixed in this code. 
+
+
        ikaon=1
        nstar=1
        ndirct=0
@@ -176,10 +187,43 @@ c      CALL FRONT(12,MASSTA,MASSPR,ELAB)
       RADTA  = 1.124 * FLOAT(MASSTA)**(1./3.)
       RADPR  = 1.124 * FLOAT(MASSPR)**(1./3.)
       ZDIST  = RADTA + RADPR
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+      write(9897,*)" RADTA     RADPR     ZDIST"
+      write(9897,*)RADTA, RADPR, ZDIST
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 c      if ( cycbox.ne.0 ) zdist=0
       BMAX   = RADTA + RADPR
       MASS   = MASSTA + MASSPR
       NTOTAL = NUM * MASS
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+      write(9897,*)"BMAX      MASS       NTOTAL"
+      write(9897,*)bmax, mass, ntotal
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+      
 *
       IF (NTOTAL .GT. MAXSTR) THEN
         WRITE(12,'(//10X,''**** FATAL ERROR: TOO MANY TEST PART. ****'//
@@ -192,17 +236,42 @@ c      if ( cycbox.ne.0 ) zdist=0
 *
 *       1) LABSYSTEM
 *
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    实验室系的处理.
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
       ETA    = FLOAT(MASSTA) * AMU
       PZTA   = 0.0
       BETATA = 0.0
-      GAMMTA = 1.0
+      GAMMTA = 1.0      
 *
       EPR    = FLOAT(MASSPR) * (AMU + 0.001 * ELAB)
       PZPR   = SQRT( EPR**2 - (AMU * FLOAT(MASSPR))**2 )
       BETAPR = PZPR / EPR
       GAMMPR = 1.0 / SQRT( 1.0 - BETAPR**2 )
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+      write(9896,*)"ETA     PZTA    BETATA    GAMMTA"
+      write(9896,*)ETA, PZTA, BETATA, GAMMTA
+      write(9896,*)"EPR     PZPR    BETAPR    GAMMPR"
+      write(9896,*)EPR, PZPR, BETAPR, GAMMPR
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+      
 *
 * BETAC AND GAMMAC OF THE C.M. OBSERVED IN THE LAB. FRAME
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    质心系的速度和gamma
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         BETAC=(PZPR+PZTA)/(EPR+ETA)
         GAMMC=1.0 / SQRT(1.-BETAC**2)
 *
@@ -252,6 +321,23 @@ c        WRITE(12,'(/10x,''*** CALCULATION DONE IN LAB-FRAME ***''/)')
       PZPR = PZPR / FLOAT(MASSPR)
 * total initial energy in the N-N cms frame
       ECMS0=ETA+EPR
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+      write(9896,*)"PZTA    PZPR     ECMS0"
+      write(9896,*)pzta, pzpr, ecms0
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 *-----------------------------------------------------------------------
 *
 * Start loop over many runs of different impact parameters
@@ -261,14 +347,31 @@ c        WRITE(12,'(/10x,''*** CALCULATION DONE IN LAB-FRAME ***''/)')
 *------------------------------------------------------------------------
 * Initialize the impact parameter B
        if (manyb. gt.1) then
-111       BX=1.0-2.0*RANART(NSEED)
-       BY=1.0-2.0*RANART(NSEED)
-       B2=BX*BX+BY*BY
-       IF(B2.GT.1.0) GO TO 111       
-       B=SQRT(B2)*(BM-BI)+BI
+ 111      BX=1.0-2.0*RANART(NSEED)
+          BY=1.0-2.0*RANART(NSEED)
+          B2=BX*BX+BY*BY
+          IF(B2.GT.1.0) GO TO 111       
+          B=SQRT(B2)*(BM-BI)+BI
        ELSE
-       B=B0
+          B=B0
        ENDIF
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+       write(9895,*) "B2     B"
+       write(9895,*)B2, B
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+       
 c      WRITE(12,'(///10X,''RUN NUMBER:'',I6)') IMANY       
 c      WRITE(12,'(//10X,''IMPACT PARAMETER B FOR THIS RUN:'',
 c     &             F9.3,'' FM''/10X,49(''*'')/)') B
@@ -276,6 +379,9 @@ c     &             F9.3,'' FM''/10X,49(''*'')/)') B
 *-----------------------------------------------------------------------
 *       INITIALIZATION
 *1 INITIALIZATION IN ISOSPIN SPACE FOR BOTH THE PROJECTILE AND TARGET
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  这个初始化是干嘛的?????
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
       call coulin(masspr,massta,NUM)
 *2 INITIALIZATION IN PHASE SPACE FOR THE TARGET
       CALL INIT(1       ,MASSTA   ,NUM     ,RADTA,
@@ -290,12 +396,37 @@ c     &             F9.3,'' FM''/10X,49(''*'')/)') B
 *3.3 INITIALIZATION FOR THE NO. OF PARTICLES IN EACH SAMPLE
 *    THIS IS NEEDED DUE TO THE FACT THAT PIONS CAN BE PRODUCED OR ABSORBED
       MASSR(0)=0
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    num的数值为1.
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
       DO 1003 IR =1,NUM
-      MASSR(IR)=MASS
+         MASSR(IR)=MASS
  1003 CONTINUE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+      write(9894,*)"num    ", num
+      do 464 IR = 1, NUM
+         write(9894,*)massr(IR)
+ 464     continue
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+      
 *3.4 INITIALIZation FOR THE KAON SPECTRUM
 *      CALL KSPEC0(BETAC,GAMMC)
-* calculate the local baryon density matrix
+*     calculate the local baryon density matrix
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  计算局部的重子数密度.
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
       CALL DENS(IPOT,MASS,NUM,OUTPAR)
 *
 *-----------------------------------------------------------------------
@@ -470,15 +601,15 @@ c of pi0 at final time
           RCOLL = RCOLL + FLOAT(LCOLL)/num
           RBLOC = RBLOC + FLOAT(LBLOC)/num
           RCNNE = RCNNE + FLOAT(LCNNE)/num
-         RDD   = RDD   + FLOAT(LDD)/num
-         RPP   = RPP   + FLOAT(LPP)/NUM
-         rppk  =rppk   + float(lppk)/num
-         RPN   = RPN   + FLOAT(LPN)/NUM
-         rpd   =rpd    + float(lpd)/num
-         RKN   = RKN   + FLOAT(LKN)/NUM
-         RNNK  =RNNK   + FLOAT(LNNK)/NUM
-         RDDK  =RDDK   + FLOAT(LDDK)/NUM
-         RNDK  =RNDK   + FLOAT(LNDK)/NUM
+          RDD   = RDD   + FLOAT(LDD)/num
+          RPP   = RPP   + FLOAT(LPP)/NUM
+          rppk  =rppk   + float(lppk)/num
+          RPN   = RPN   + FLOAT(LPN)/NUM
+          rpd   =rpd    + float(lpd)/num
+          RKN   = RKN   + FLOAT(LKN)/NUM
+          RNNK  =RNNK   + FLOAT(LNNK)/NUM
+          RDDK  =RDDK   + FLOAT(LDDK)/NUM
+          RNDK  =RNDK   + FLOAT(LNDK)/NUM
           RCNND = RCNND + FLOAT(LCNND)/num
           RCNDN = RCNDN + FLOAT(LCNDN)/num
           RDIRT = RDIRT + FLOAT(LDIRT)/num
@@ -491,21 +622,21 @@ c of pi0 at final time
           ACNDN=LCNDN/DT/num
           ADECAY=LDECAY/DT/num
           ARES=LRES/DT/num
-         ADOU=LDOU/DT/NUM
-         ADDRHO=LDDRHO/DT/NUM
-         ANNRHO=LNNRHO/DT/NUM
-         ANNOM=LNNOM/DT/NUM
-         ADD=LDD/DT/num
-         APP=LPP/DT/num
-         appk=lppk/dt/num
+          ADOU=LDOU/DT/NUM
+          ADDRHO=LDDRHO/DT/NUM
+          ANNRHO=LNNRHO/DT/NUM
+          ANNOM=LNNOM/DT/NUM
+          ADD=LDD/DT/num
+          APP=LPP/DT/num
+          appk=lppk/dt/num
           APN=LPN/DT/num
-         apd=lpd/dt/num
-         arh=lrho/dt/num
-         aom=lomega/dt/num
-         AKN=LKN/DT/num
-         ANNK=LNNK/DT/num
-         ADDK=LDDK/DT/num
-         ANDK=LNDK/DT/num
+          apd=lpd/dt/num
+          arh=lrho/dt/num
+          aom=lomega/dt/num
+          AKN=LKN/DT/num
+          ANNK=LNNK/DT/num
+          ADDK=LDDK/DT/num
+          ANDK=LNDK/DT/num
 * PRINT OUT THE VARIOUS COLLISION RATES
 * (1)N-N COLLISIONS 
 c       WRITE(1010,9991)NT*DT,ACNND,ADOU,ADIRT,ADDRHO,ANNRHO+ANNOM

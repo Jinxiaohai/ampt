@@ -40,6 +40,28 @@ cc      SAVE /frzprc/
       SAVE   
 clin-6/06/02 test local freezeout for string melting,
 c     use space-time values at local freezeout saved in /frzprc/:
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+      if(isoft .eq. 4) then
+         do 472 ihai = 1, MUL
+            write(9908,*)idfrz(ihai), pxfrz(ihia), pyfrz(ihai),
+     &           pzfrz(ihai), xmfrz(ihai), gxfrz(ihai), gyfrz(ihai),
+     &           gzfrz(ihai), ftfrz(ihai)
+ 472     continue      
+      endif
+      
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
       if(isoft.eq.5) then
          do 1001 I = 1, MUL
             ITYP5(i)=idfrz(i)
@@ -81,7 +103,42 @@ c
          ZT3(ISTRG) = ZT3(ISTRG) + GZ5(I)
          NP(ISTRG) = NP(ISTRG) + 1
  1003 CONTINUE
-      NSTR = NSP + NST + NSI
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+      do 471 I = 1, MUL
+         ISTRG = LSTRG1(I)
+         write(9907,*)"ISTRG = ", istrg
+ 471     continue
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+         NSTR = NSP + NST + NSI
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+         write(9906,*)"NSTR    NSP    NST    NSI"
+         write(9906,*)nstr, nsp, nst, nsi
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 clin-7/03/01 correct averaging on transverse coordinates, no shift needed:
       if(isoft.eq.3.or.isoft.eq.4.or.isoft.eq.5) then
          DO 1004 I = 1, NSTR

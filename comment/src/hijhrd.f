@@ -8,7 +8,7 @@ C     for the the same pair(JP,JT). JFLG->a flag to show whether   *
 C     jets can be produced (with valence quark=1,gluon=2, q-qbar=3)*
 C     or not(0). Information of jets are in  COMMON/ATTJET and     *
 C     /MINJET. ABS(NFP(JP,6)) is the total number jets produced by *
-C    JP. If NFP(JP,6)<0 JP can not produce jet anymore.                   *
+C    JP. If NFP(JP,6)<0 JP can not produce jet anymore.                 
 C*******************************************************************
 c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
 c$$$      IOPTJET=1，所有的jet将会形成单string系统。
@@ -126,6 +126,32 @@ C                *********must have enough energy to produce jets
         MISP=0
         MIST=0
 C
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$        NFP(I,10): to indicate whether the valence quarks of
+c$$$        diquarks (anti_quarks) in projectile nucleon (hadron) I suff
+c$$$        a hard scattering.
+c$$$        = 0 : has not suffered a hard scattering.
+c$$$        = 1 : suffered one or more hard scatterings in current binar
+c$$$        nucleon-nucleon collision.
+c$$$        = -1: suffered one or more hard scatterings in previous bina
+c$$$        nucleon-nucleon collisions.
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        write(9957,*)"NFP(JP,10) = ",NFP(JP,10),
+     &       "NFT(JT,10) = ", NFP(JT,10)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
         IF(NFP(JP,10).EQ.0 .AND. NFT(JT,10).EQ.0) THEN
                 MINT(44)=MINT4
                 MINT(45)=MINT5
@@ -226,6 +252,26 @@ C                ********the proj and targ remnants must have at least
 C                        a CM energy that can produce two strings
 C                        with minimum mass HIPR1(1)(see HIJSFT HIJFRG)
 C
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        write(9956,*)"firstPX = ", HINT1(41), "firstPY = ", HINT1(42),
+     &       "firstPZ = ", HINT1(43), "firstE = ", HINT1(44),
+     &       "firstMASS = ", HINT1(45), "FLAVOR = ", IHNT2(14)
+        write(9956,*)"secondPX = ", HINT1(51), "secondPY = ", HINT1(52),
+     &       "secondPZ = ", HINT1(53), "secondE = ", HINT1(54),
+     &       "secondMASS = ", HINT1(55), "FLAVOR = ", IHNT2(15)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
         HINT1(41)=P(7,1)
         HINT1(42)=P(7,2)
         HINT1(43)=P(7,3)
@@ -251,6 +297,9 @@ C*******************************************************************
 C        gluon  jets are going to be connectd with
 C        the final leadng string of quark-aintquark
 C*******************************************************************
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  胶子喷注将会和末态的夸克和反夸克的领头strings连接。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         JFLG=2
         JPP=0
         LPQ=0
@@ -414,7 +463,8 @@ C                ********replace J with a quark
                 ELSE IF(IP2.LT.0) THEN
                         IPB(-IP2)=IPB(LP)
                 ENDIF
-C                ******** replace J+1 with anti-quark
+
+C     ******** replace J+1 with anti-quark
                 J=J+1
                 GO TO 181
         ENDIF

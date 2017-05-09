@@ -28,7 +28,23 @@ cc      SAVE /INPUT2/
      2     dpp1(MAXSTR,MAXR),dppion(MAXSTR,MAXR)
 cc      SAVE /RNDF77/
       SAVE   
+
       MULTI1(K) = IAINT2(1)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+      write(9898,*)"K = ", k, "MULTI1(K) = ", MULTI1(K)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
       DO 1001 I = 1, MULTI1(K)
          ITYP1(I, K) = ITYPAR(I)
          GX1(I, K) = GXAR(I)
@@ -45,8 +61,14 @@ clin-5/2008 all hadrons not perturbatively-produced have the weight of 1:
 c         dpp1(I,K)=1.
          dpp1(I,K)=dpertp(I)
  1001 CONTINUE
+      
 c     initialize final time of each particle to ntmax*dt except for 
 c     decay daughters, which have values given by tfdcy() and >(ntmax*dt):
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  初始每个粒子的末态的时间到ntmax*dt
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
       do 1002 ip=1,MAXSTR
          tfdcy(ip)=NTMAX*DT
          tft(ip)=NTMAX*DT
@@ -57,6 +79,8 @@ c
             tfdpi(ip,irun)=NTMAX*DT
  1003    continue
  1004 continue
+
+      
       RETURN
       END
 c=======================================================================

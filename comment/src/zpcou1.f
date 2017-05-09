@@ -18,6 +18,21 @@ c
         dy1 = 0.5d0
         dy = 0.2d0
         ntotal = nevnt * nsbrun
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        write(9909,*)"ntotal = ", ntotal
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 c
         return
         end

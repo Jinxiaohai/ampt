@@ -29,6 +29,23 @@ c1      get next collision between particles
               iscat = i
            end if
  1001   continue
+c$$$c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$        DO 477 i = 1, ichkpt
+c$$$           write(9923,*)ot(i), iscat
+c$$$ 477       continue
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
         if (iscat .ne. 0) jscat = next(iscat)
 c2      get ictype
 c     10/30/02 ictype=0:collision; 1:parton formation

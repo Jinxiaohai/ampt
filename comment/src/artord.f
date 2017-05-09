@@ -63,6 +63,9 @@ c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
          dptemp(I) = dpertp(I)
  1001 CONTINUE
       CALL ARINDX(MAXSTR, NP, FT0, INDX)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    np是总的粒子数目。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
       DO 1002 I = 1, NP
 cbz12/3/98
 c         IF (ITYP0(INDX(I)) .EQ. 211) THEN
@@ -98,6 +101,29 @@ clin-3/2009:
 c         END IF
 cbz12/3/98end
  1002 CONTINUE
+
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+      write(9899,*)"id, px, py ,pz, mass, x, y, z, weight"
+      do 466 i = 1, NP
+         write(9899,465)itypar(i), pxar(i), pyar(i), pzar(i),
+     &        xmar(i), gxar(i), gyar(i), gzar(i),
+     &        dpertp(i)
+ 466  continue
+ 465  format(2x,i8, 9(2x, f8.4))
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+      
       IAINT2(1) = NPAR
 c
       RETURN

@@ -1,3 +1,6 @@
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    给出错误发生的信息。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
       SUBROUTINE LUERRM(MERR,CHMESS)    
 C...Purpose: to inform user of errors in program execution. 
       COMMON/LUJETS/N,K(9000,5),P(9000,5),V(9000,5)

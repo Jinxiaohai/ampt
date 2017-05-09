@@ -15,6 +15,9 @@
       SAVE   
 c     All hadrons at the start of hadron cascade have the weight of 1
 c     except those inserted by the user in this subroutine:
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  np0是所有的粒子。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
       np0=IAINT2(1)
 c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
 c$$$      初始所有的强子的cascade权重为1,dpertp(I)貌似就应该是权重了.
@@ -64,6 +67,9 @@ c$$$         zsmear=sngl(smearh)*(2.*RANART(NSEED)-1.)
 c$$$         GZAR(I)=GZAR(I)+zsmear
 c$$$ 100  CONTINUE
       
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  IAINT2(1)的数值不发生改变。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
       IAINT2(1)=IAINT2(1)+nadd
 c
       if(nadd.ge.1.and.idpert.ne.1.and.idpert.ne.2) then

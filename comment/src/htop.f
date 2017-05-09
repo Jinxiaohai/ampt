@@ -28,6 +28,9 @@ cc      SAVE /ARPRC/
 cc      SAVE /decom/
       COMMON/RNDF77/NSEED
 cc      SAVE /RNDF77/
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  不进入ZPC的粒子。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
       COMMON /NOPREC/ NNOZPC, ITYPN(MAXIDL),
      &     GXN(MAXIDL), GYN(MAXIDL), GZN(MAXIDL), FTN(MAXIDL),
      &     PXN(MAXIDL), PYN(MAXIDL), PZN(MAXIDL), EEN(MAXIDL),
@@ -65,8 +68,24 @@ clin-5b/2008 calculate the number of hadrons to be converted to q/qbar:
            nsmbbbar=0
            nsmmeson=0
 c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
-c$$$     遍历所有的生成的部分子(包括胶子，光子，和中微子)
+c$$$     遍历所有的生成的部分子(包括胶子，光子，和中微子)注意ID号。
 c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+           write(9936,*)"NATT = ", natt
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+           
            do i=1,natt
               id=ITYPAR(i)
               idabs=iabs(id)
@@ -144,6 +163,9 @@ c
 clin-9/2011 determine spectator nucleons consistently
 c           if(PXAR(i).eq.0.and.PYAR(i).eq.0.and.PEAR(i)
 c     1 .ge.(HINT1(1)/2*0.99).and.((id.eq.2112).or.(id.eq.2212))) then
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    各种生成的类型的核子的判断，以及是否进入ZPC给出判定。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
               if(abs(PXAR(i)).le.epsiPt.and.abs(PYAR(i)).le.epsiPt
      1             .and.(PZAR(i).gt.amax1(0.,PZPROJ-epsiPz)
      2                .or.PZAR(i).lt.(-PZTARG+epsiPz))
@@ -243,8 +265,20 @@ c     save other particles (leptons and photons) outside of ZPC:
               inozpc=1
            endif
 c
+
+
+
+
+
+
            if(inozpc.eq.1) then
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  非强子的处理。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
               NJSGS(i)=0
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  不进入zpc的粒子的个数的统计。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
               nnozpc=nnozpc+1
               itypn(nnozpc)=ITYPAR(i)
               pxn(nnozpc)=PXAR(i)
@@ -257,9 +291,15 @@ c
               gzn(nnozpc)=GZAR(i)
               ftn(nnozpc)=FTAR(i)
            else
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    对于介子的处理。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
               NJSGS(i)=2
               ptwo(1,5)=dble(ulmass(it(1)))
               ptwo(2,5)=dble(ulmass(it(2)))
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  更新的ptwo数组的数值。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
               call decomp(dble(patt(i,1)),dble(patt(i,2)),
      1             dble(patt(i,3)),dble(XMAR(i)),i,it(1))
               ipamax=2
@@ -294,6 +334,9 @@ c
      1 .and.iabs(it(2)).gt.1000) then
                  NJSGS(i)=3
                  xmdq=ptwo(2,5)
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  重子的处理。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
                  ptwo(1,5)=dble(ulmass(it(3)))
                  ptwo(2,5)=dble(ulmass(it(4)))
 c     8/19/02 avoid actual argument in common blocks of DECOMP:
@@ -330,7 +373,47 @@ c
            endif
  100        continue
       MUL=NPAR
-c      
+
+
+
+
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+      write(9935,*)"id, px, py, pz, e, mass, x, y, z, t, 
+     & lstrg, lpart, vx, vy, vz, xstrg, ystrg, istrg"
+      DO 489 i = 1, NPAR
+         write(9935,487)ityp0(i), px0(i), py0(i), pz0(i), e0(i),
+     &        xmass0(i), gx0(i), gy0(i), gz0(i), ft0(i),
+     &        lstrg0(i), lpart0(i), vxp0(i), vyp0(i), vzp0(i),
+     &        xstrg(i), ystrg(i), istrg(i)
+ 489  continue
+
+      DO 488 i = 1, nnozpc
+         write(9934,486)itypn(i), pxn(i), pyn(i), pzn(i), een(i),
+     &        xmn(i), gxn(i), gyn(i), gzn(i), ftn(i)
+ 488  continue
+
+ 487  format (i6, 2x,9(f12.4, 2x), 2x,i6, 2x,i6, 2x,5(f12.4, 2x)
+     &     2x,i10)
+ 486  format (i10, 2x,9(f12.4, 2x))
+      
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+      
+c     
 clin-5b/2008:
       if((isoft.eq.4.or.isoft.eq.5).and.(ioscar.eq.2.or.ioscar.eq.3)) 
      1     then

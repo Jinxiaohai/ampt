@@ -1,3 +1,6 @@
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  此函数生成一个时间信息进行返回。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         double precision function ftime1(iseed)
 c       this program is used to generate formation time
 c       the calling program needs a common /par1/

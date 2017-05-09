@@ -27,9 +27,31 @@ c     Uzhi:
         PHI=HINT1(20)
         BBX=BB*COS(PHI)
         BBY=BB*SIN(PHI)
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        write(9950,*)"call quench !!!!!"
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 c
         IF(NTP.EQ.2) GO TO 400
-        IF(NTP.EQ.3) GO TO 2000 
+        IF(NTP.EQ.3) GO TO 2000
+
+
+
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$     注意下面的程序分为三段，分别对三种来源的jet进行区别的淬灭。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
 C*******************************************************
 C Jet interaction for proj jet in the direction PHIP
 C******************************************************
@@ -187,7 +209,34 @@ C                ********momentum and energy transfer from jet
                  NQ=NQ+1
                  GO TO 200
  290              CONTINUE
-              RETURN
+                  RETURN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  
 C*******************************************************
 C Jet interaction for target jet in the direction PHIT
 C******************************************************
@@ -347,7 +396,27 @@ C                ********momentum and energy transfer from jet
                 NQ=NQ+1
                 GO TO 600
 690        CONTINUE
-        RETURN
+           RETURN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
 C********************************************************
 C        Q-QBAR jet interaction
 C********************************************************

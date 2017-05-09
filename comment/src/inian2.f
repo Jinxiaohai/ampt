@@ -1,3 +1,6 @@
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  delta数组的初始化。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         subroutine inian2
         implicit double precision (a-h, o-z)
         common /para5/ iconfg, iordsc

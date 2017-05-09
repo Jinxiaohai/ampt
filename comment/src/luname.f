@@ -1,3 +1,6 @@
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  给出粒子或者部分子的名字。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
       SUBROUTINE LUNAME(KF,CHAU)    
 C...Purpose: to give the particle/parton name as a character string.    
       COMMON/LUDAT1/MSTU(200),PARU(200),MSTJ(200),PARJ(200) 

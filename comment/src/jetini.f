@@ -57,10 +57,8 @@ c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
 c$$$  WW WW     WW WW    RR RR    II     TT     EE
 c$$$  WW        WW      RR  RR   II     TT     EEEEEE
 c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-        if(xiaohaiflag .eq. 6) then
            write(9991, *)"IHNT2(5) = ", IHNT2(5),
      &      "  IHNT2(6) = ", IHNT2(6)
-        endif
 c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
 c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
 c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
@@ -80,6 +78,13 @@ c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
            itype=1
            IF(NFP(JP,4).EQ.2112) itype=2
         ELSE
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  程序实际走的这一步。根据碰撞核子的种类给itype进行给值。
+c$$$           proton + proton : 1
+c$$$           proton + neutron : 2
+c$$$           neutron + proton : 3
+c$$$           neutron + neutron : 4
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
            IF(NFP(JP,4).EQ.2212 .AND. NFT(JT,4).EQ.2212) THEN
               itype=1
            ELSE IF(NFP(JP,4).EQ.2212 .AND. NFT(JT,4).EQ.2112) THEN
@@ -173,6 +178,11 @@ c
         DO 101 ISUB=1,200
            MSUB(ISUB)=0
  101    CONTINUE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$     jet的硬碰撞的初始化，这程序貌似永远都不发生啊，因为IHPR(3)的默
+c$$$     认初始化为0.
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c___________________________________________________________________
         IF(IHPR2(3).EQ.1) THEN
            MSUB(11)=1
            MSUB(12)=1
@@ -210,11 +220,31 @@ c                q+qbar->g+gamma,q+qbar->gamma+gamma, q+g->q+gamma
            MDME(MDCY(21,2)+ISEL-1,1)=1
 C             **********Heavy quark production
         ENDIF
+c_______________________________________________________________________
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        write(9959,*)"INI(itype) = ", ini(itype)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        
 260        IF(INI(itype).NE.0) GO TO 800
 C
 C
 400        INI(itype)=1
         IF(IHPR2(10).EQ.0) MSTP(122)=0
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    确定原始的弹核的味道代码
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         IF(NFP(JP,4).EQ.2212) THEN
                 BEAM='P'
         ELSE IF(NFP(JP,4).EQ.-2212) THEN
@@ -234,6 +264,9 @@ C
         ELSE
                 WRITE(6,*) 'unavailable beam type', NFP(JP,4)
         ENDIF
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  确定原始的靶核的味道代码
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         IF(NFT(JT,4).EQ.2212) THEN
                 TARG='P'
         ELSE IF(NFT(JT,4).EQ.-2212) THEN
@@ -258,6 +291,26 @@ C
 C       ******************indicate for initialization use when
 C                         structure functions are called in PYTHIA
 C
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        write(9958,*)"BEAM = ", BEAM, "TARG = ",
+     &       TARG,"HINT1(1) = ",HINT1(1)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  参数为弹核和靶核的核子的类型。第四个参数为系统的能量。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         CALL PYINIT('CMS',BEAM,TARG,HINT1(1))
         MINT4=MINT(44)
         MINT5=MINT(45)

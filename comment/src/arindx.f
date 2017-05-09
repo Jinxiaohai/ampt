@@ -1,3 +1,6 @@
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$     对粒子进行排序。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
       subroutine arindx(n, m, arrin, indx)
 cbz1/29/99end
 c     indexes the first m elements of ARRIN of length n, i.e., outputs INDX

@@ -25,6 +25,9 @@ cc      SAVE /ilist1/
 cc      SAVE /ilist4/
         common /ilist5/ ct(MAXPTN), ot(MAXPTN), tlarge
 cc      SAVE /ilist5/
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    t : 当前的操作时间。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         common /ilist6/ t, iopern, icolln
 cc      SAVE /ilist6/
         common /ana1/ ts(12)
@@ -32,18 +35,64 @@ cc      SAVE /ana1/
         common/anim/nevent,isoft,isflag,izpc
 cc      SAVE /anim/
         COMMON /AREVT/ IAEVT, IARUN, MISS
-        SAVE   
-c       save last collision info
+c$$$  was added by xiaohai
+        common /tracexiaohai/ tracetime(30), indextime(30)
+        SAVE
+
+c     save last collision info
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        write(9924,*)"ictype = ", ictype
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<        
         if (mod(ictype, 2) .eq. 0) then
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$        ityps(i) = ityp(i)
+c$$$        gxs(i) = gx(i)
+c$$$        gys(i) = gy(i)
+c$$$        gzs(i) = gz(i)
+c$$$        fts(i) = ft(i)
+c$$$        pxs(i) = px(i)
+c$$$        pys(i) = py(i)
+c$$$        pzs(i) = pz(i)
+c$$$        es(i) = e(i)
+c$$$        xmasss(i) = xmass(i)
+c$$$        etas(i) = eta(i)
+c$$$        raps(i) = rap(i)
+c$$$        taus(i) = tau(i)
+c$$$        savrec(i)储存粒子I的信息。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
            call savrec(iscat)
            call savrec(jscat)
         end if
 c1      get operation type
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    获取操作的类型。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         call getict(t1)
 c2      check freezeout condition
-        if (iconfg .eq. 1 .and. t1 .gt. tlarge / 2d0) return 1
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  这里是冻结的条件，三个的return 1,其中second and third是不执行的
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        if (iconfg .eq. 1 .and. t1 .gt. tlarge / 2d0) then
+           write(9889,*)"return 4000 first"
+           return 1
+        endif
         if (iconfg .eq. 2 .or. iconfg .eq. 3) then
-           if (t1 .gt. tend1) return 1
+           if (t1 .gt. tend1) then
+              write(9889,*)"return 4000 second"
+              return 1
+           endif
 c           if (ichkpt .eq. mul) then
 c              ii = 0
 c              do i = 1, mul
@@ -58,7 +107,10 @@ c              if (ii .eq. 0) return 1
 c           end if
         end if
         if (iconfg .eq. 4 .or. iconfg .eq. 5) then
-           if (t1 .gt. tend2) return 1
+           if (t1 .gt. tend2) then
+              write(9889,*)"return 4000 third"
+              return 1
+           endif
         end if
 clin-6/06/02 local freezeout for string melting,
 c     decide what partons have frozen out at time t1:
@@ -79,6 +131,29 @@ c     &        'jscat=', min(indx(iscat), indx(jscat))
 c           write (2006, 1234) ' icolln=', icolln, 't=', t
 c 1233           format (a10, i10, a10, i10)
 c 1234           format (a15, i10, a5, f23.17, a5, f23.17)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+           write(9922, 476) 'iscat=', iscat, 'jscat=', jscat
+           write(9922, *) 'iscat=', iscat, ' jscat=', jscat,ityp(iscat),
+     &     ityp(jscat)
+           write(9922, 476) 'iscat=', max(indx(iscat), indx(jscat)),
+     &     'jscat=', min(indx(iscat), indx(jscat))
+           write(9922, 475) ' icolln=', icolln, 't=', t
+ 476           format (a10, i10, a10, i10)
+ 475           format (a15, i10, a5, f23.17, a5, f23.17)
+           write(9922,*)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
         end if
 c4.1    deal with formation
         if (iconfg .eq. 1
@@ -134,6 +209,12 @@ c           end if
 c4.2.2     collision between particles     
 clin-6/2009 write out info for each collision:
 c           if (mod(ictype, 2) .eq. 0) call scat(t, iscat, jscat)
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$   粒子之间的碰撞。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  碰撞之前的信息。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
            if (mod(ictype, 2) .eq. 0) then
               if(ioscar.eq.3) then
             write(95,*) 'event,miss,iscat,jscat=',iaevt,miss,iscat,jscat
@@ -158,7 +239,15 @@ c           if (mod(ictype, 2) .eq. 0) call scat(t, iscat, jscat)
               endif
 c     
               call scat(t, iscat, jscat)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+           write(9890,*)"t,    iscat,    jscat"
+           write(9890,*)t, iscat, jscat
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+              
 c     
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  碰撞之后的信息。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
               if(ioscar.eq.3) then
                  if(dmax1(abs(gx(iscat)),abs(gy(iscat)),
      1                abs(gz(iscat)),abs(ft(iscat)),abs(gx(jscat)),
@@ -183,8 +272,42 @@ c
  200       format(I6,2(1x,f8.3),1x,f10.3,1x,f6.3,4(1x,f8.2))
  201       format(I6,2(1x,f8.3),1x,f10.3,1x,f6.3,4(1x,e8.2))
         end if
-c5      update the interaction list
+c     5      update the interaction list
+        
         call ulist(t)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        call traceparton
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    更新相互作用的列表。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        write(9888,*)"update interaction list"
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 c6      update ifmpt. ichkpt
 c       old ichkpt and ifmpt are more conveniently used in ulist
         if (ifmpt .le. mul) then

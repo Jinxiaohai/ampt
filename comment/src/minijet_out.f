@@ -14,6 +14,25 @@
         common /para7/ ioscar,nsmbbbar,nsmmeson
         common/phidcy/iphidcy,pttrig,ntrig,maxmiss,ipi0dcy
         SAVE
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        write(9954,*)"pttrig = ", pttrig
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  其中NPJ(I)是第I个核子产生的partons.而下面的程序是想统计产生的
+c$$$        minijet的数量。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         ntrig=0
         do I = 1, IHNT2(1)
            do J = 1, NPJ(I)
@@ -33,7 +52,82 @@
               if(pt.ge.pttrig) ntrig=ntrig+1
            enddo
         enddo
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    从最后的标号来区分parton的来源。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        write(9953,*) IAEVT,MISS,IHNT2(1),IHNT2(3)
+        DO 516 I = 1, IHNT2(1)
+           DO 515 J = 1, NPJ(I)
+              xiaohaiityp = KFPJ(I,J)
+              xiaohaigx = YP(1,I)+0.5*BB*cos(phiRP)
+              xiaohaigy = YP(2,I)+0.5*BB*sin(phiRP)
+              xiaohaigz = 0
+              xiaohaift = 0
+              xiaohaipx = PJPX(I,J)
+              xiaohaipy = PJPY(I,J)
+              xiaohaipz = PJPZ(I,J)
+              xiaohaixmass = PJPM(I,J)
+              write(9953,*)xiaohaiityp, xiaohaipx, xiaohaipy,
+     &             xiaohaipz, xiaohaixmass, xiaohaigx,
+     &             xiaohaigy, xiaohaigz, xiaohaift, 1
+ 515       continue
+           if (NPJ(I).NE.0) write(9953,*)
+ 516    continue
+        write(9953,*)"new line."
+        DO 514 I = 1, IHNT2(3)
+           DO 513 J = 1, NTJ(I)
+              xiaohaiityp = KFTJ(I,J)
+              xiaohaigx = YT(1,I)+0.5*BB*cos(phiRP)
+              xiaohaigy = YT(2,I)+0.5*BB*sin(phiRP)
+              xiaohaigz = 0
+              xiaohaift = 0
+              xiaohaipx = PJTX(I,J)
+              xiaohaipy = PJTY(I,J)
+              xiaohaipz = PJTZ(I,J)
+              xiaohaixmass = PJTM(I,J)
+              write(9953,*)xiaohaiityp, xiaohaipx, xiaohaipy,
+     &             xiaohaipz, xiaohaixmass, xiaohaigx,
+     &             xiaohaigy, xiaohaigz, xiaohaift, 2
+ 513       continue 
+           if (NTJ(I).NE.0) write(9953,*)
+ 514    continue
+        write(9953,*)"new line."
+      DO 512 I = 1, NSG
+         DO 511 J = 1, NJSG(I)
+            xiaohaiityp = K2SG(I,J)
+            xiaohaigx = 0.5*(YP(1,IASG(I,1))+YT(1,IASG(I,2)))
+            xiaohaigy = 0.5*(YP(2,IASG(I,1))+YT(2,IASG(I,2)))
+            xiaohaigz = 0
+            xiaohaift = 0
+            xiaohaipx = PXSG(I,J)
+            xiaohaipy = PYSG(I,J)
+            xiaohaipz = PZSG(I,J)
+            xiaohaixmass = PMSG(I,J)
+            write(9953,*)xiaohaiityp, xiaohaipx, xiaohaipy,
+     &           xiaohaipz, xiaohaixmass, xiaohaigx,
+     &           xiaohaigy, xiaohaigz, xiaohaift, 3
+ 511     continue
+           if (NJSG(I).NE.0) write(9953,*)
+ 512  continue
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        
 c     Require at least 1 initial minijet parton above the trigger Pt value:
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    没有minijet产生。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         if(ntrig.eq.0) return
 c.....transfer data from HIJING to ZPC
         if(ioscar.eq.3) write(96,*) IAEVT,MISS,IHNT2(1),IHNT2(3)
@@ -112,6 +206,7 @@ c              if(ityp.ne.21) goto 1011
  1012   CONTINUE
  200  format(I6,2(1x,f8.3),1x,f10.3,1x,f6.3,2(1x,f8.2),2(2x,f2.0),2x,I2)
  201  format(I6,2(1x,f8.3),1x,f10.3,1x,f6.3,2(1x,e8.2),2(2x,f2.0),2x,I2)
+ 510  format(1x,f8.0, 7(1x,f8.3), 1x,f8.0)
 c
         return
         end

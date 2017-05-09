@@ -190,6 +190,7 @@ c$$$     文件号的递减编号
 c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
       OPEN (16, FILE = 'ana/ampt.dat', STATUS = 'UNKNOWN')
       OPEN (14, FILE = 'ana/zpc.dat', STATUS = 'UNKNOWN')
+      open(10000, file="testOut/subroutinexiaohai.dat")
       open(9999, file = 'testOut/hijsetxiaohai.dat', status = "unknown")
       open(9998, file = 'testOut/hijwdsxiaohai.dat', status = 'unknown')
 c$$$  9997 和 9996给了parton.oscar和hadron.oscar
@@ -229,13 +230,148 @@ c$$$  9997 和 9996给了parton.oscar和hadron.oscar
       open(9962,file="testOut/nclotxiaohai.dat")
       open(9961,file="testOut/nhardxiaohai.dat")
       open(9960,file="testOut/jethappenxiaohai.dat")
+      open(9959,file="testOut/initypexiaohai.dat")
+      open(9958,file="testOut/typejpjtxiaohai.dat")
+      open(9957,file="testOut/hijhrdxiaohai.dat")
+      open(9956,file="testOut/firstscatterxiaohai.dat")
+      open(9955,file="testOut/quarkantiquarkxiaohai.dat")
+      open(9954,file="testOut/minijetoutxiaohai.dat")
+      open(9953,file="testOut/minijetxiaohai.dat")
+      open(9952,file="testOut/hboostxiaohai.dat")
+      open(9951,file="testOut/nptjxiaohai.dat")
+      open(9950,file="testOut/quenchxiaohai.dat")
+      open(9949,file="testOut/nsgxiaohai.dat")
+      open(9948,file="testOut/Nxiaohai.dat")
+      open(9947,file="testOut/k2flavorxiaohai.dat")
+      open(9946,file="testOut/nattxiaohai.dat")
+      open(9945,file="testOut/natt2xiaohai.dat")
+      open(9944,file="testOut/natt3xiaohai.dat")
+      open(9943,file="testOut/embedhighptxiaohai.dat")
+      open(9942,file="testOut/natt4xiaohai.dat")
+      open(9941,file="testOut/hjana1xiaohai.dat")
+      open(9940,file="testOut/pargluxiaohai.dat")
+      open(9939,file="testOut/mulxiaohai.dat")
+      open(9938,file="testOut/countnumxiaohai.dat")
+      open(9937,file="testOut/natt5xiaohai.dat")
+      open(9936,file="testOut/nattcountxiaohai.dat")
+      open(9935,file="testOut/jinruzpcxiaohai.dat")
+      open(9934,file="testOut/bujinruzpcxiaohai.dat")
+      open(9933,file="testOut/sancanshuxiaohai.dat")
+      open(9932,file="testOut/readixiaohai.dat")
+      open(9931,file="testOut/inievtxiaohai.dat")
+      open(9930,file="testOut/inirunxiaohai.dat")
+      open(9929,file="testOut/ftimexiaohai.dat")
+      open(9928,file="testOut/indxxiaohai.dat")
+      open(9927,file="testOut/inixiaohai.dat")
+      open(9926,file="testOut/equaldistancexiaohai.dat")
+      open(9925,file="testOut/iilistxiaohai.dat")
+      open(9924,file="testOut/zpcrunxiaohai.dat")
+      open(9923,file="testOut/getictxiaohai.dat")
+      open(9922,file="testOut/collisionxiaohai.dat")
+      open(9921,file="testOut/newposxiaohai.dat")
+      open(9920,file="testOut/iaevtpxiaohai.dat")
+      open(9919,file="testOut/t2timexiaohai.dat")
+      open(9918,file="testOut/xncollxiaohai.dat")
+      open(9917,file="testOut/iloopxiaohai.dat")
+      open(9916,file="testOut/v2partonxiaohai.dat")
+      open(9915,file="testOut/filenum49xiaohai.dat")
+      open(9914,file="testOut/ntmaxdtxiaohai.dat")
+      open(9913,file="testOut/p-animatexiaohai.dat")
+      open(9912,file="testOut/parton-txiaohai.dat")
+      open(9911,file="testOut/zpca2xiaohai.dat")
+      open(9910,file="testOut/zpcouxiaohai.dat")
+      open(9909,file="testOut/zpcou1xiaohai.dat")
+      open(9908,file="testOut/zpstrgxiaohai.dat")
+      open(9907,file="testOut/istrgxiaohai.dat")
+      open(9906,file="testOut/nstrxiaohai.dat")
+      open(9905,file="testOut/afterzpcxiaohai.dat")
+      open(9904,file="testOut/hjana2xiaohai.dat")
+      open(9903,file="testOut/hjana2partonxiaohai.dat")
+      open(9902,file="testOut/nisgxiaohai.dat")
+      open(9901,file="testOut/ihpr2_20xiaohai.dat")
+      open(9900,file="testOut/ihpr2_20newxiaohai.dat")
+      open(9899,file="testOut/sorthadronxiaohai.dat")
+      open(9898,file="testOut/arini2xiaohai.dat")
+      open(9897,file="testOut/centralityxiaohai.dat")
+      open(9896,file="testOut/labkinematicsxiaohai.dat")
+      open(9895,file="testOut/artimpactparxiaohai.dat")
+      open(9894,file="testOut/artmassxiaohai.dat")
+      open(9893,file="testOut/traceparton1xiaohai.dat")
+      open(9892,file="testOut/traceparton2xiaohai.dat")
+      open(9891,file="testOut/traceparton3xiaohai.dat")
+      open(9890,file="testOut/timevaluexiaohai.dat")
+      open(9889,file="testOut/zpcrunreturnxiaohai.dat")
+      open(9888,file="testOut/updatalistxiaohai.dat")
+      open(9887,file="testOut/tracetimexiaohai.dat")
 c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
 c$$$  行号的递减编号
 c$$$  521
 c$$$  520  
 c$$$  519
 c$$$  518
-c$$$  517  
+c$$$  517
+c$$$  516
+c$$$  515
+c$$$  514
+c$$$  513
+c$$$  512
+c$$$  511
+c$$$  510
+c$$$  509
+c$$$  508
+c$$$  507
+c$$$  506
+c$$$  505
+c$$$  504
+c$$$  503
+c$$$  502
+c$$$  501
+c$$$  500
+c$$$  499
+c$$$  498
+c$$$  497
+c$$$  496
+c$$$  495
+c$$$  494
+c$$$  493
+c$$$  492
+c$$$  491  
+c$$$  490
+c$$$  489
+c$$$  488
+c$$$  487
+c$$$  486
+c$$$  485
+c$$$  484
+c$$$  483
+c$$$  482
+c$$$  481
+c$$$  480
+c$$$  479
+c$$$  478
+c$$$  477
+c$$$  476
+c$$$  475
+c$$$  474
+c$$$  473
+c$$$  472
+c$$$  471
+c$$$  470
+c$$$  469
+c$$$  468
+c$$$  467
+c$$$  466
+c$$$  465
+c$$$  464
+c$$$  463
+c$$$  462
+c$$$  461
+c$$$  460
+c$$$  459
+c$$$  458
+c$$$  457
+c$$$  456
+c$$$ 455  
 c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
       
 ctest off for resonance (phi, K*) studies:
@@ -333,6 +469,22 @@ c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 c     evaluate Npart (from primary NN collisions) for both proj and targ:
              call getnp
 c     switch for final parton fragmentation:
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$         IHPR2(20) = 1
+         write(9900,*)"IHPR2(20) ==>  ", IHPR2(20)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
              IF (IHPR2(20) .EQ. 0) GOTO 2000
 c     In the unlikely case of no interaction (even after loop of 20 in HIJING),
 c     still repeat the event to get an interaction 
@@ -348,16 +500,31 @@ c     (this may have an additional "trigger" effect):
                 endif
              endif
 c.....ART initialization and run
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  arini:初始化粒子的信息。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
              CALL ARINI
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  arini2():初始粒子的末态的时间到ntmax*dt.
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
              CALL ARINI2(K)
  1000     CONTINUE
 c
+
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  初始化那一堆数组.
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
           CALL ARTAN1
 clin-9/2012 Analysis is not used:
 c          CALL HJANA3
+
+
           CALL ARTMN
 clin-9/2012 Analysis is not used:
 c          CALL HJANA4
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
           CALL ARTAN2
  2000  CONTINUE
 c

@@ -32,6 +32,10 @@ cc      SAVE /AREVT/
 cc      SAVE /AROUT/
       SAVE   
       DATA IW/0/
+
+
+
+
       IF (isevt .EQ. IAEVT .AND. isrun .EQ. IARUN) THEN
          DO 1001 I = 1, 50
             dgxp2a(I) = sgxp2a(I)
@@ -55,6 +59,11 @@ cc      SAVE /AROUT/
          IW = IW + 1
       END IF
 c.....analysis
+
+
+
+
+
       DO 1004 I = 1, IHNT2(1)
          DO 1003 J = 1, NPJ(I)
             IF (KFPJ(I, J) .NE. 21) THEN
@@ -71,6 +80,10 @@ c.....analysis
             END IF
  1003    CONTINUE
  1004 CONTINUE
+
+
+
+
       DO 1006 I = 1, IHNT2(3)
          DO 1005 J = 1, NTJ(I)
             IF (KFTJ(I, J) .NE. 21) THEN
@@ -87,6 +100,10 @@ c.....analysis
             END IF
  1005    CONTINUE
  1006 CONTINUE
+
+
+
+
       DO 1008 I = 1, NSG
          DO 1007 J = 1, NJSG(I)
             IF (K2SG(I, J) .NE. 21) THEN
@@ -105,6 +122,10 @@ c.....analysis
             END IF
  1007    CONTINUE
  1008 CONTINUE
+
+
+
+
       DO 1009 I = 1, MUL
          IGX = 1 + int(ABS(sngl(GX5(I))) / DGX)
          IF (IGX .GT. 50 .or. IGX .LT. 1) GOTO 700
@@ -132,6 +153,9 @@ c
  900     CONTINUE
  1009 CONTINUE
 c
+
+
+      
       RETURN
       END
 c-----------------------------------------------------------------------

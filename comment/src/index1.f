@@ -1,3 +1,6 @@
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  n是最大的那个400001，m是多重数，arrin是时间，indx是索引。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
       subroutine index1(n, m, arrin, indx)
 c     indexes the first m elements of ARRIN of length n, i.e., outputs INDX
 c     such that ARRIN(INDEX(J)) is in ascending order for J=1,...,m

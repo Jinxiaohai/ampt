@@ -44,55 +44,55 @@ C
 c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 c$$$        判断弹核的碰撞类型
 c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        IF(PROJ.NE.'A') THEN
-                IF(PROJ.EQ.'P') THEN
-                    IHNT2(5)=2212
-                ELSE IF(PROJ.EQ.'PBAR') THEN 
-                    IHNT2(5)=-2212
-                ELSE IF(PROJ.EQ.'PI+') THEN
-                    IHNT2(5)=211
-                ELSE IF(PROJ.EQ.'PI-') THEN
-                    IHNT2(5)=-211
-                ELSE IF(PROJ.EQ.'K+') THEN
-                    IHNT2(5)=321
-                ELSE IF(PROJ.EQ.'K-') THEN
-                    IHNT2(5)=-321
-                ELSE IF(PROJ.EQ.'N') THEN
-                    IHNT2(5)=2112
-                ELSE IF(PROJ.EQ.'NBAR') THEN
-                    IHNT2(5)=-2112
-                ELSE
-                    WRITE(6,*) PROJ, 'wrong or unavailable proj name'
-                    STOP
-                ENDIF
-                HINT1(8)=ULMASS(IHNT2(5))
-        ENDIF
+c$$$        IF(PROJ.NE.'A') THEN
+c$$$                IF(PROJ.EQ.'P') THEN
+c$$$                    IHNT2(5)=2212
+c$$$                ELSE IF(PROJ.EQ.'PBAR') THEN 
+c$$$                    IHNT2(5)=-2212
+c$$$                ELSE IF(PROJ.EQ.'PI+') THEN
+c$$$                    IHNT2(5)=211
+c$$$                ELSE IF(PROJ.EQ.'PI-') THEN
+c$$$                    IHNT2(5)=-211
+c$$$                ELSE IF(PROJ.EQ.'K+') THEN
+c$$$                    IHNT2(5)=321
+c$$$                ELSE IF(PROJ.EQ.'K-') THEN
+c$$$                    IHNT2(5)=-321
+c$$$                ELSE IF(PROJ.EQ.'N') THEN
+c$$$                    IHNT2(5)=2112
+c$$$                ELSE IF(PROJ.EQ.'NBAR') THEN
+c$$$                    IHNT2(5)=-2112
+c$$$                ELSE
+c$$$                    WRITE(6,*) PROJ, 'wrong or unavailable proj name'
+c$$$                    STOP
+c$$$                ENDIF
+c$$$                HINT1(8)=ULMASS(IHNT2(5))
+c$$$        ENDIF
 c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 c$$$        判断靶核的碰撞类型
 c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        IF(TARG.NE.'A') THEN
-                IF(TARG.EQ.'P') THEN
-                    IHNT2(6)=2212
-                ELSE IF(TARG.EQ.'PBAR') THEN 
-                    IHNT2(6)=-2212
-                ELSE IF(TARG.EQ.'PI+') THEN
-                    IHNT2(6)=211
-                ELSE IF(TARG.EQ.'PI-') THEN
-                    IHNT2(6)=-211
-                ELSE IF(TARG.EQ.'K+') THEN
-                    IHNT2(6)=321
-                ELSE IF(TARG.EQ.'K-') THEN
-                    IHNT2(6)=-321
-                ELSE IF(TARG.EQ.'N') THEN
-                    IHNT2(6)=2112
-                ELSE IF(TARG.EQ.'NBAR') THEN
-                    IHNT2(6)=-2112
-                ELSE
-                    WRITE(6,*) TARG,'wrong or unavailable targ name'
-                    STOP
-                ENDIF
-                HINT1(9)=ULMASS(IHNT2(6))
-        ENDIF
+c$$$        IF(TARG.NE.'A') THEN
+c$$$                IF(TARG.EQ.'P') THEN
+c$$$                    IHNT2(6)=2212
+c$$$                ELSE IF(TARG.EQ.'PBAR') THEN 
+c$$$                    IHNT2(6)=-2212
+c$$$                ELSE IF(TARG.EQ.'PI+') THEN
+c$$$                    IHNT2(6)=211
+c$$$                ELSE IF(TARG.EQ.'PI-') THEN
+c$$$                    IHNT2(6)=-211
+c$$$                ELSE IF(TARG.EQ.'K+') THEN
+c$$$                    IHNT2(6)=321
+c$$$                ELSE IF(TARG.EQ.'K-') THEN
+c$$$                    IHNT2(6)=-321
+c$$$                ELSE IF(TARG.EQ.'N') THEN
+c$$$                    IHNT2(6)=2112
+c$$$                ELSE IF(TARG.EQ.'NBAR') THEN
+c$$$                    IHNT2(6)=-2112
+c$$$                ELSE
+c$$$                    WRITE(6,*) TARG,'wrong or unavailable targ name'
+c$$$                    STOP
+c$$$                ENDIF
+c$$$                HINT1(9)=ULMASS(IHNT2(6))
+c$$$        ENDIF
 C...Switch off decay of pi0, K0S, Lambda, Sigma+-, Xi0-, Omega-.
         IF(IHPR2(12).GT.0) THEN
 c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<

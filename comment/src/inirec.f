@@ -1,4 +1,5 @@
-c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$      得到parton的信息。
 c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         subroutine inirec
         implicit double precision (a-h, o-z)
@@ -141,7 +142,31 @@ c$$$            xmfrz(i)=xmass(i)
 c$$$            ifrz(i)=0
 c$$$         endif
 clin-6/06/02-end
- 1001 continue
+ 1001   continue
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        write(9927,*)"indx, ityp, x, y, z, t, px, py, pz, e, mass
+     &, vx, vy, vz"
+        DO 482 ihai=1, MUL
+           write(9927,481)indx(ihai),ityp(ihai), gx(ihai), gy(ihai),
+     &          gz(ihai), ft(ihai), px(ihai), py(ihai), pz(ihai),
+     &          e(ihai), xmass(ihai),
+     &          vxp(ihai), vyp(ihai), vzp(ihai)
+ 482    continue
+ 481    format (2x,i8, 2x,i8, 12(2x,f8.4))
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        
 c       save particle info for fixed time analysis
 c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
 c$$$  储存粒子的信息为了固定时间的分析，也就是说gxs(i)是存诸的信息，
@@ -160,9 +185,6 @@ c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
            xmasss(i) = xmass(i)
  1002   continue
 clin-6/2009
-c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
-c$$$  default的处理方式
-c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         if(isoft.eq.1.and.(ioscar.eq.2.or.ioscar.eq.3))
      1       write(92,*) iaevt,miss,mul
         do 1003 i = 1, mul
@@ -224,6 +246,30 @@ c     1          1x,I6,2(1x,f8.3))
      1          1x,I5,2(1x,f7.2))
 c
  1003   continue
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        write(9926,*)"indx, ityp, x, y, z, t, px, py, pz, e, mass
+     &, vx, vy, vz"
+        DO 480 ihai=1, MUL
+           write(9926,479)indx(ihai),ityp(ihai), gx(ihai), gy(ihai),
+     &          gz(ihai), ft(ihai), px(ihai), py(ihai), pz(ihai),
+     &          e(ihai), xmass(ihai),
+     &          vxp(ihai), vyp(ihai), vzp(ihai)
+ 480    continue
+ 479    format (2x,i8, 2x,i8, 12(2x,f8.4))
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        
 c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 c$$$        common /PARA5/ i_config, iord_sch
 c$$$        i_config : choice of geometric configuration and space cell

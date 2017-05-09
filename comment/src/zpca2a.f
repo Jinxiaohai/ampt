@@ -44,6 +44,7 @@ cc      SAVE /ana4/
 c     7/20/01:
 c           et = sqrt(px(i) ** 2 + py(i) ** 2 + xmp ** 2)
            et = dsqrt(px(i) ** 2 + py(i) ** 2 + xmp ** 2)
+
            do 1001 j = 1, 24
               if (rapi .gt. j + centy - 13d0 
      &           .and. rapi .lt. j  + centy - 12d0) then
@@ -66,16 +67,19 @@ c           et = sqrt(px(i) ** 2 + py(i) ** 2 + xmp ** 2)
               t2 = tlarge
               ipic = 12
            end if
+
            do 1003 ian = 1, ipic
               if (t1 .le. ts(ian) .and.
      &           t2 .gt. ts(ian)) then
                  call zpca1b(rapi, et, ian)
               end if
  1003      continue
+
            if (iconfg .eq. 1) then
               call zpca1b(rapi, et, 12)
            end if
  1004   continue
+
         do 1005 ian = 1, 12
            if (dn(ian) .eq. 0d0 .or. dn1(ian) .eq. 0d0 .or.
      &        dn2(ian) .eq. 0d0) then

@@ -1,23 +1,22 @@
       SUBROUTINE INIT(MINNUM,MAXNUM,NUM,RADIUS,X0,Z0,P0,
      &                GAMMA,ISEED,MASS,IOPT)
-*                                                                      *
-*       PURPOSE:     PROVIDING INITIAL CONDITIONS FOR PHASE-SPACE      *
-*                    DISTRIBUTION OF TESTPARTICLES                     *
-*       VARIABLES:   (ALL INPUT)                                       *
-*         MINNUM  - FIRST TESTPARTICLE TREATED IN ONE RUN    (INTEGER) *
-*         MAXNUM  - LAST TESTPARTICLE TREATED IN ONE RUN     (INTEGER) *
-*         NUM     - NUMBER OF TESTPARTICLES PER NUCLEON      (INTEGER) *
-*         RADIUS  - RADIUS OF NUCLEUS "FM"                      (REAL) *
-*         X0,Z0   - DISPLACEMENT OF CENTER OF NUCLEUS IN X,Z-          *
-*                   DIRECTION "FM"                              (REAL) *
-*         P0      - MOMENTUM-BOOST IN C.M. FRAME "GEV/C"        (REAL) *
-*         GAMMA   - RELATIVISTIC GAMMA-FACTOR                   (REAL) *
-*         ISEED   - SEED FOR RANDOM-NUMBER GENERATOR         (INTEGER) *
-*         MASS    - TOTAL MASS OF THE SYSTEM                 (INTEGER) *
-*         IOPT    - OPTION FOR DIFFERENT OCCUPATION OF MOMENTUM        *
-*                   SPACE                                    (INTEGER) *
-*                                                                      *
-**********************************
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$      目的:providing initial conditions for phase-space distribution
+c$$$      of testparticles
+c$$$      variables:   (all input)
+c$$$      minnum   :   first testparticle treated in one run
+c$$$      maxnum   :   last  testparticle treated in one run
+c$$$      num      :   number of testparticles per nucleon
+c$$$      radius   :   radius of nucleus "FM"
+c$$$      x0, y0   :   displacement of center ofnucleus in x,z direction
+c$$$                   "fm"
+c$$$      p0       :   momentum-boost in cm frame
+c$$$      gamma    :   relativistic gamma-factor
+c$$$      iseed    :   seed for random-number generator
+c$$$      mass     :   total mass of the system
+c$$$      iopt     :   option for different occupation of momentum
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+      
       PARAMETER     (MAXSTR=150001,  AMU   = 0.9383)
       PARAMETER     (MAXX   =   20,  MAXZ  =    24)
       PARAMETER     (PI=3.1415926)

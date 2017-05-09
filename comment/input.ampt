@@ -1,4 +1,4 @@
-62.4            ! EFRM (sqrt(S_NN) in GeV if FRAME is CMS)
+200             ! EFRM (sqrt(S_NN) in GeV if FRAME is CMS)
 CMS             ! FRAME
 A               ! PROJ
 A               ! TARG
@@ -6,9 +6,9 @@ A               ! TARG
 79              ! IZP (projectile Z number)
 64              ! IAT (target A number)
 29              ! IZT (target Z number)
-1               ! NEVNT (total number of events)
-2.              ! BMIN (mininum impact parameter in fm) 
-3.		! BMAX (maximum impact parameter in fm, also see below)
+50              ! NEVNT (total number of events)
+6.              ! BMIN (mininum impact parameter in fm) 
+6.1		! BMAX (maximum impact parameter in fm, also see below)
 4		! ISOFT (D=1): select Default AMPT or String Melting(see below)
 150		! NTMAX: number of timesteps (D=150), see below
 0.2		! DT: timestep in fm (hadron cascade time= DT*NTMAX) (D=0.2)

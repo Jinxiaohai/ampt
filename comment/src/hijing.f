@@ -1251,7 +1251,7 @@ c$$$  WW WW     WW WW    RR RR    II     TT     EE
 c$$$  WW        WW      RR  RR   II     TT     EEEEEE
 c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
-c$$$     对其中的两个核子碰撞产生的jet进行初始化。
+c$$$     对其中的两个核子碰撞产生的jet进行初始化,njet的数量可能不止为1.
 c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         DO 150 ijet=1,NJET
            CALL JETINI(JP,JT,0)
@@ -1301,7 +1301,6 @@ c           call minijet_out(BB)
 clin-4/2012 
 clin-6/2009 write out initial transverse positions of initial nucleons:
 c           write(94,*) IAEVT,MISS,IHNT2(1),IHNT2(3)
-        DO 201 JP=1,IHNT2(1)
 clin-6/2009:
 c           write(94,203) YP(1,JP)+0.5*BB, YP(2,JP), JP, NFP(JP,5)
 clin-2/2012:
@@ -1309,13 +1308,6 @@ c       write(94,203) YP(1,JP)+0.5*BB, YP(2,JP), JP, NFP(JP,5),yp(3,jp)
 clin-4/2012:
 c           write(94,203) YP(1,JP)+0.5*BB*cos(phiRP), 
 c     1 YP(2,JP)+0.5*BB*sin(phiRP), JP, NFP(JP,5),yp(3,jp)
-           IF(NFP(JP,5).GT.2) THEN
-              NINP=NINP+1
-           ELSE IF(NFP(JP,5).EQ.2.OR.NFP(JP,5).EQ.1) THEN
-              NELP=NELP+1
-           ENDIF
- 201    continue
-        DO 202 JT=1,IHNT2(3)
 clin-6/2009 target nucleon # has a minus sign for distinction from projectile:
 c           write(94,203) YT(1,JT)-0.5*BB, YT(2,JT), -JT, NFT(JT,5)
 clin-2/2012:
@@ -1323,6 +1315,17 @@ c       write(94,203) YT(1,JT)-0.5*BB, YT(2,JT), -JT, NFT(JT,5),yt(3,jt)
 clin-4/2012:
 c           write(94,203) YT(1,JT)-0.5*BB*cos(phiRP), 
 c     1 YT(2,JT)-0.5*BB*sin(phiRP), -JT, NFT(JT,5),yt(3,jt)
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    确定核子的碰撞的状态。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        DO 201 JP=1,IHNT2(1)
+           IF(NFP(JP,5).GT.2) THEN
+              NINP=NINP+1
+           ELSE IF(NFP(JP,5).EQ.2.OR.NFP(JP,5).EQ.1) THEN
+              NELP=NELP+1
+           ENDIF
+ 201    continue
+        DO 202 JT=1,IHNT2(3)
            IF(NFT(JT,5).GT.2) THEN
               NINTHJ=NINTHJ+1
            ELSE IF(NFT(JT,5).EQ.2.OR.NFT(JT,5).EQ.1) THEN
@@ -1331,11 +1334,26 @@ c     1 YT(2,JT)-0.5*BB*sin(phiRP), -JT, NFT(JT,5),yt(3,jt)
  202    continue
 c 203    format(f10.3,1x,f10.3,2(1x,I5))
 c 203    format(f10.3,1x,f10.3,2(1x,I5),1x,f10.3)
-c     
+c
+
+
+
+        
+
+
+
+
+        
 c*******************************
 C********perform jet quenching for jets with PT>HIPR1(11)**********
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$     下面完成三部分产生的jet的簇灭，注意循环的位置，以及quench的参数。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         IF((IHPR2(8).NE.0.OR.IHPR2(3).NE.0).AND.IHPR2(4).GT.0.AND.
      &                        IHNT2(1).GT.1.AND.IHNT2(3).GT.1) THEN
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  NFP(I,7)的数值向上几十行。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
                 DO 271 I=1,IHNT2(1)
                         IF(NFP(I,7).EQ.1) CALL QUENCH(I,1)
 271                CONTINUE
@@ -1345,7 +1363,48 @@ C********perform jet quenching for jets with PT>HIPR1(11)**********
                 DO 273 ISG=1,NSG
                         IF(IASG(ISG,3).EQ.1) CALL QUENCH(ISG,3)
 273                CONTINUE
-        ENDIF
+                ENDIF
+
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+                DO 509 I=1,IHNT2(1)
+                        write(9951,*)NPJ(I)
+ 509                 CONTINUE
+                     write(9951,*)
+                DO 508 I=1,IHNT2(3)
+                        write(9951,*)NTJ(I)
+ 508                    CONTINUE
+                     write(9951,*)
+                DO 507 ISG=1,NSG
+                        write(9951,*)NJSG(NSG)
+ 507                 CONTINUE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+                
+                
+
+
+
+
+
+
+
+
+
+
+
+
+                
 c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
 c$$$    处理strings的方式的不同。
 c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -1835,9 +1894,46 @@ c$$$clin-4/19/01-soft3, fragment strings, then convert hadrons to partons
 c$$$c     and input to ZPC:
         elseif(isoft.eq.3.or.isoft.eq.4.or.isoft.eq.5) then
 clin-4/24/01 normal fragmentation first:
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    此时isflag还全是0.
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         isflag=0
-c        write(99,*) 'IAEVT,NSG,NDR=',IAEVT,NSG,NDR
+c     write(99,*) 'IAEVT,NSG,NDR=',IAEVT,NSG,NDR
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        write(9949,*)"IAEVT, NSG, NDR=", IAEVT, NSG, NDR
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+                write(9948,*)"N =====>  ", N, "NATT ====>  ", NATT
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
         IF(IHPR2(20).NE.0) THEN
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  注意下面的循环是两层。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
            DO 560 ISG=1,NSG
                 CALL HIJFRG(ISG,3,IERROR)
 C
@@ -1857,13 +1953,82 @@ C
 C                ******** boost back to lab frame(if it was in)
 C
                 nsbstR=0
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+                DO 506 j=nsbst, N
+                   write(9947,*)"K(j,2) == ", K(j,2),
+     &                  "IDSTR == ", IDSTR
+ 506               continue
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
                 DO 560 I=nsbst,N
                    IF(K(I,2).EQ.IDSTR) THEN
                       nsbstR=nsbstR+1
                       GO TO 560
                    ENDIF
                    K(I,4)=nsbstR
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+                write(9948,*)"N =====>  ", N, "NATT ====>  ", NATT
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  NATT:当前事件产生的所用的粒子。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
                    NATT=NATT+1
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$        KATT(I,1): particle ID of the I_th produced particle. Users
+c$$$        have to refer to JETSET7.2 for identifying particles with
+c$$$        their ID's.(产生的第I个粒子的ID).
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$        KATT(I,2): This is a code to identify the sources from which
+c$$$        the particle comes.
+c$$$        = 0 : projectile which has not interacted at all.
+c$$$        = 1 : projectile nucleon (or hadron) which only suffers an
+c$$$              elastic collision.
+c$$$        = 2 : from a diffractive projectile nucleon (or hadron) in a
+c$$$              single diffractive interaction.
+c$$$        = 3 : from the fragmentation of a projectile string
+c$$$              system(including gluon jets).
+c$$$        = 10: target nucleon (or hadron) which has not interacted at
+c$$$              all.
+c$$$        = 11: target nucleon (or hadron) which only suffers an elastic
+c$$$              collision.
+c$$$        = 12: from a diffractive target nucleon (or hadron) in a single
+c$$$              diffractive interaction.
+c$$$        = 13: from the fragmentation of a target string system
+c$$$              (including gluon jets).
+c$$$        = 20: from scattered partons which form string systems
+c$$$              themeselves.
+c$$$        = 40: from direct production in the hard process (currently,
+c$$$              only direct photons are included).
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$        KATT(I,4): (I=1,...,NATT)status number of the particle.
+c$$$        = 1 : finally of directly produced particles.
+c$$$        = 11: particles which has already decayed.
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
                    KATT(NATT,1)=K(I,2)
                    KATT(NATT,2)=20
                    KATT(NATT,4)=K(I,1)
@@ -1873,6 +2038,16 @@ clin-4/2008 to avoid out-of-bound error in K():
 c                   IF(K(I,3).EQ.0 .OR. 
 c     1 (K(I,3).ne.0.and.K(K(I,3),2).EQ.IDSTR)) THEN
 c                      KATT(NATT,3)=0
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$        KATT(I,3): (I=1,...,NATT)line number of the parent particle.
+c$$$        For finally produced or directly produced (not from the decay of
+c$$$        another particle)particles, it is set to 0(The option to keep
+c$$$        the information of all particles including the decayed ones is
+c$$$        IHPR2(21)=1).
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    三个if鉴定母粒子
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
                    IF(K(I,3).EQ.0) THEN
                       KATT(NATT,3)=0
                    ELSEIF(K(I,3).ne.0.and.K(K(I,3),2).EQ.IDSTR) THEN
@@ -1907,10 +2082,32 @@ c                   write(99,*) xstrg0(NATT),ystrg0(NATT),istrg0(NATT),
 c     1                  K(I,2),P(I, 1),P(I, 2),P(I, 3)
 cbz11/11/98end
  560            CONTINUE
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+                DO 505 iy=1, NATT
+                   write(9946,*)itypar(iy),pxar(iy),pyar(iy),pzar(iy),
+     &                  xmar(iy),gxar(iy),gyar(iy),gzar(iy),ftar(iy),
+     &                  istrg0(iy)
+ 505               continue
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 C                ********Fragment the q-qbar jets systems *****
 C
            JTP(1)=IHNT2(1)
            JTP(2)=IHNT2(3)
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  分别遍历靶核和弹核的粒子数。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
            DO 600 NTP=1,2
            DO 600 jjtp=1,JTP(NTP)
                 CALL HIJFRG(jjtp,NTP,IERROR)
@@ -1999,7 +2196,27 @@ cbz11/11/98end
  590                CONTINUE 
  600           CONTINUE
 C     ********Fragment the q-qq related string systems
+               
         ENDIF
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+                DO 504 iy=1, NATT
+                   write(9945,*)itypar(iy),pxar(iy),pyar(iy),pzar(iy),
+     &                  xmar(iy),gxar(iy),gyar(iy),gzar(iy),ftar(iy),
+     &                  istrg0(iy)
+ 504            continue
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 clin-4/2008 check for zero NDR value:
         if(NDR.ge.1) then
 c
@@ -2027,10 +2244,65 @@ clin-11/11/03     set direct photons positions and time at formation:
  650        CONTINUE
 clin-4/2008:
          endif
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+                DO 503 iy=1, NATT
+                   write(9944,*)itypar(iy),pxar(iy),pyar(iy),pzar(iy),
+     &                  xmar(iy),gxar(iy),gyar(iy),gzar(iy),ftar(iy),
+     &                  istrg0(iy)
+ 503            continue
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 clin-6/2009
          call embedHighPt
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+                DO 501 iy=1, NATT
+                   write(9942,*)itypar(iy),pxar(iy),pyar(iy),pzar(iy),
+     &                  xmar(iy),gxar(iy),gyar(iy),gzar(iy),ftar(iy)
+ 501            continue
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 c
         CALL HJANA1
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+                DO 490 iy=1, NATT
+                   write(9937,*)itypar(iy),pxar(iy),pyar(iy),pzar(iy),
+     &                  xmar(iy),gxar(iy),gyar(iy),gzar(iy),ftar(iy)
+ 490            continue
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 clin-4/19/01 convert hadrons to partons for ZPC (with GX0 given):
         call htop
 clin-7/03/01 move up, used in zpstrg (otherwise not set and incorrect):
@@ -2062,6 +2334,21 @@ c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
         CALL ZPCMN
 clin-6/2009:
 c        WRITE (14, 395) ITEST, MUL, bimp, NELP,NINP,NELT,NINTHJ
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$        输出部分子的冻结后的信息
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
         WRITE (14, 395) IAEVT, MISS, MUL, bimp, NELP,NINP,NELT,NINTHJ
         itest=itest+1
         DO 1016 I = 1, MUL
@@ -2088,6 +2375,9 @@ clin-5/2009 ctest off:
 c        call frztm(1,1)
 clin  save data after ZPC for fragmentation purpose:
 c.....transfer data back from ZPC to HIJING
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    储存zpc之后的数据，将数据传输给hijing.
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         DO 1018 I = 1, MAXSTR
            DO 1017 J = 1, 3
               K1SGS(I, J) = 0
@@ -2127,6 +2417,28 @@ clin-7/20/01-end
            GZSGS(NSTRG, NPART) = GZ5(I)
            FTSGS(NSTRG, NPART) = FT5(I)
  1019   CONTINUE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        do 470 i = 1, MUL
+           write(9905,469)ityp5(i), lstrg1(i), lpart1(i), ityp5(i),
+     &          px5(i), py5(i),
+     &          pz5(i), xmass5(i),
+     &          E5(i), gx5(i), gy5(i), gz5(i), ft5(i)
+ 470    continue
+ 469    format(4(2x,i8), 9(2x,f8.4))
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        
         CALL HJANA2
 clin-4/19/01-end
         endif
@@ -2184,6 +2496,28 @@ c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
            goto 565
         endif
 clin-4/30/01-end        
+
+
+
+
+
+
+        
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+        write(9901,*)"IHPR2(20) ====>  ", IHPR2(20)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
         IF(IHPR2(20).NE.0) THEN
            DO 360 ISG=1,NSG
                 CALL HIJFRG(ISG,3,IERROR)
@@ -2395,6 +2729,11 @@ C                        ********store the direct-produced particles
 C
 clin-4/19/01 soft3:
  565    continue
+
+
+
+
+        
         DENGY=EATT/(IHNT2(1)*HINT1(6)+IHNT2(3)*HINT1(7))-1.0
         IF(ABS(DENGY).GT.HIPR1(43).AND.IHPR2(20).NE.0
      &     .AND.IHPR2(21).EQ.0) THEN

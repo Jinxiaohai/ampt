@@ -30,11 +30,15 @@ cc      SAVE /AREVT/
 cc      SAVE /AROUT/
       SAVE   
       DATA IW/0/
+
+
       IF (isevt .EQ. IAEVT .AND. isrun .EQ. IARUN) THEN
          DO 1001 I = 1, 50
             DNRG2B(I) = SNRG2B(I)
             dtg2b(I - 25) = stg2b(I - 25)
  1001    CONTINUE
+
+
       ELSE
          DO 1002 I = 1, 50
             SNRG2B(I) = DNRG2B(I)
@@ -45,6 +49,10 @@ cc      SAVE /AROUT/
          IW = IW + 1
       END IF
 c.....analysis
+
+
+
+
       DO 1003 I = 1, MUL
          J = LSTRG1(I)
          GX0 = sngl(ZT1(J))

@@ -1,0 +1,6 @@
+average forward partcles number ==>  239.821
+average backward particles number ==>  168.709
+average epsilon2 ==>  0.304142
+average epsilon3 ==>  0.184182
+average psi2 ==>  1.70469
+average psi3 ==>  0.994948

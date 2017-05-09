@@ -1,3 +1,6 @@
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  calculte flow
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         subroutine flowp(idd)
 c
         implicit double precision  (a-h, o-z)
@@ -58,7 +61,17 @@ csp
         data tsp/0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 
      &       1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 
      &       2  , 3,   4,   5,   6,   7,   8,   9,   10,  20,  30/
+
+
+
+
 c     idd=0: initialization for flow analysis, called by artdri.f:
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    这里idd的数值默认值为0，是自己修改的idd=1.
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    此if当idd为0时打开了一堆文件和初始化了那些数组。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         if(idd.eq.0) then        
            nfile(1)=60
            nfile(2)=64
@@ -84,8 +97,8 @@ c     idd=0: initialization for flow analysis, called by artdri.f:
      1 FILE = 'ana1/v2p-active1.dat', STATUS = 'UNKNOWN')
            OPEN (nfile(3)+3, 
      1 FILE = 'ana1/v2ph-y1.dat', STATUS = 'UNKNOWN')
-           OPEN (49, FILE = 'ana1/v2p-ebe.dat', STATUS = 'UNKNOWN')
-           write(49, *) '    ievt,  v2p,  v2p_y2,   v2p_y1'
+           OPEN (9915, FILE = 'ana1/v2p-ebe.dat', STATUS = 'UNKNOWN')
+           write(9915, *) '    ievt,  v2p,  v2p_y2,   v2p_y1'
 c
            OPEN (59, FILE = 'ana1/v2h.dat', STATUS = 'UNKNOWN')
            OPEN (68, FILE = 'ana1/v2h-y2.dat', STATUS = 'UNKNOWN')
@@ -93,6 +106,7 @@ c
            OPEN (88, FILE = 'ana1/v2h-ebe.dat', STATUS = 'UNKNOWN')
            write(88, *) '    ievt,  v2h,  v2h_y2,   v2h_y1'
 csp07/05
+
            nlfile(1)=70
            nlfile(2)=72
            nlfile(3)=74
@@ -105,6 +119,7 @@ csp07/05
            OPEN (nlfile(3),FILE='ana1/mtl-y1.dat', STATUS = 'UNKNOWN')
            OPEN (nlfile(3)+1, 
      1 FILE = 'ana1/mtl-formed1.dat', STATUS = 'UNKNOWN')
+
            nsfile(1)=76
            nsfile(2)=78
            nsfile(3)=80
@@ -117,6 +132,7 @@ csp07/05
            OPEN (nsfile(3),FILE='ana1/mts-y1.dat', STATUS = 'UNKNOWN')
            OPEN (nsfile(3)+1, 
      1 FILE = 'ana1/mts-formed1.dat', STATUS = 'UNKNOWN')
+
            nmfile(1)=82
            nmfile(2)=83
            nmfile(3)=84
@@ -125,8 +141,14 @@ csp07/05
            OPEN (nmfile(3),FILE='ana1/Nmt-y1.dat', STATUS = 'UNKNOWN')
 clin-8/2015: changed unit number of animation files,
 ctest off     turn off animation output (0 to turn off and 1 to turn on):
-           ifanim=0
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  这里ifanim的数值为0，是自己修改为1的。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+           ifanim=1
 clin-11/27/00 for animation:
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    animation : 生气，活泼，动画片制作，动画片。  
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
            if(ifanim.eq.1) then
               OPEN (10, FILE = 'ana1/h-animate.dat', STATUS = 'UNKNOWN')
               write(10,*) ntmax, dt
@@ -134,14 +156,19 @@ clin-11/27/00 for animation:
               OPEN (15, FILE = 'ana1/p-finalft.dat', STATUS = 'UNKNOWN')
            endif
 clin-10/2014: write out partons at all eta, turn off now:
-c           if(nevent.ge.1) 
-           if(nevent.lt.1) 
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    这里是自己放开的。要向关闭只需要改为(nevent .lt. 1).
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+           if(nevent .ge. 1) 
      1          OPEN (93, FILE = 'ana1/parton-t.dat', STATUS='UNKNOWN')
 c
            itimep=0
            itanim=0
            iaevtp=0
 csp
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    初始化这些数组。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
            do 1002 ii=1,50
               do 1001 iy=1,3
                  DMYil(ii,iy) = 0d0
@@ -175,27 +202,27 @@ c
                  s2pfrz(ii,iy)=0d0
                  etpfrz(ii,iy)=0d0
                  xnpfrz(ii,iy)=0d0
-csp07/05
+c     sp07/05
                  etpl(ii,iy)=0d0
                  etps(ii,iy)=0d0
                  etplf(ii,iy)=0d0
                  etpsf(ii,iy)=0d0
                  etlfrz(ii,iy)=0d0
                  etsfrz(ii,iy)=0d0
-              xnpl(ii,iy)=0d0
-              xnps(ii,iy)=0d0
-              xnplf(ii,iy)=0d0
-              xnpsf(ii,iy)=0d0
-              xnlfrz(ii,iy)=0d0
-              xnsfrz(ii,iy)=0d0
-              v2pl(ii,iy)=0d0
-              v2ps(ii,iy)=0d0
-              v2plf(ii,iy)=0d0
-              v2psf(ii,iy)=0d0
-              s2pl(ii,iy)=0d0
-              s2ps(ii,iy)=0d0
-              s2plf(ii,iy)=0d0
-              s2psf(ii,iy)=0d0
+                 xnpl(ii,iy)=0d0
+                 xnps(ii,iy)=0d0
+                 xnplf(ii,iy)=0d0
+                 xnpsf(ii,iy)=0d0
+                 xnlfrz(ii,iy)=0d0
+                 xnsfrz(ii,iy)=0d0
+                 v2pl(ii,iy)=0d0
+                 v2ps(ii,iy)=0d0
+                 v2plf(ii,iy)=0d0
+                 v2psf(ii,iy)=0d0
+                 s2pl(ii,iy)=0d0
+                 s2ps(ii,iy)=0d0
+                 s2plf(ii,iy)=0d0
+                 s2psf(ii,iy)=0d0
  1004      continue
  1005   continue
            do 1006 iy=1,3
@@ -207,15 +234,74 @@ csp07/05
               v2psum(iy)=0.d0
               v2p2sm(iy)=0.d0
  1006      continue
+
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+           write(9920,*)"iaevtp = ", iaevtp, " ianp = ", ianp
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 c     idd=1: calculate parton elliptic flow, called by zpc.f:
+
+
+
+
+
+
+
+
         else if(idd.eq.1) then        
            if(iaevt.ne.iaevtp.and.ianp.eq.31) itanim=0
 c
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$           注意此处输出的行数和collision-history的行数是一样的
+           write(9919,*)"FT5(iscat) = ", ft5(iscat), "iscat = ",
+     &          iscat
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
            t2time = FT5(iscat)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    一个时间的间隔段。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
            do 1008 ianp = 1, 30
               if (t2time.lt.tsp(ianp+1).and.t2time.ge.tsp(ianp)) then
 c     write flow info only once at each fixed time:
                  xncoll(ianp)=xncoll(ianp)+1d0
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+          write(9918,*) "xncoll(ianp) = ", xncoll(ianp)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 c     to prevent an earlier t2time comes later in the same event 
 c     and mess up nevt:
                  if(ianp.le.itimep.and.iaevt.eq.iaevtp) goto 101
@@ -228,6 +314,9 @@ clin-8/2015 to avoid IEEE_DIVIDE_BY_ZERO or IEEE_INVALID:
 c                    ypartn=0.5d0*dlog((E5(i)+PZ5(i))
 c     1                   /(E5(i)-PZ5(i)+1.d-8))
                     delta=1d-8
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$     给出快度和横向的动量。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
                     if((E5(i)-dabs(PZ5(i))+delta).le.0) then
                        ypartn=1000000.d0*sign(1.d0,PZ5(i))
                        write(6,*) 'ypartn error',E5(i)-dabs(PZ5(i))
@@ -273,11 +362,45 @@ ctest-end
                           iloop=3
                        endif
                     endif
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+           write(9917,*)"iloop = ", iloop
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
                     do 50 iy=1,iloop
 clin-5/2012:
 c                       if(pt2.gt.0.) then
                        if(pt2.gt.0d0) then
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  给出parton的v2信息。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
                           v2prtn=(PX5(I)**2-PY5(I)**2)/pt2
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+          write(9916,*)"v2parton = ", v2prtn
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+                          
 clin-5/2012:
 c                          if(abs(v2prtn).gt.1.) 
                           if(dabs(v2prtn).gt.1d0) 
@@ -285,12 +408,18 @@ c                          if(abs(v2prtn).gt.1.)
                           v2p(ianp,iy)=v2p(ianp,iy)+v2prtn
                           v2p2(ianp,iy)=v2p2(ianp,iy)+v2prtn**2
                        endif
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  横向的半径。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
                        xperp2=GX5(I)**2+GY5(I)**2
 clin-5/2012:
 c                       if(xperp2.gt.0.) 
                        if(xperp2.gt.0d0) 
      1        s2p(ianp,iy)=s2p(ianp,iy)+(GX5(I)**2-GY5(I)**2)/xperp2
                        xnpart(ianp,iy)=xnpart(ianp,iy)+1d0
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    etp横向的能量信息。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
                        etp(ianp,iy)=etp(ianp,iy)+dsqrt(pt2+XMASS5(I)**2)
 ctest off density:
 c                       etp(ianp,iy)=etp(ianp,iy)
@@ -309,8 +438,14 @@ ctest off density:
 c                  etpf(ianp,iy)=etpf(ianp,iy)
 c     1                   +dsqrt(pt2+XMASS5(I)**2+PZ5(i)**2)/volume
                        endif
- 50                    continue
- 100                 continue
+ 50                 continue
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    50结束的是iloop
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ 100             continue
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    100结束的是mul
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
                  itimep=ianp
                  iaevtp=iaevt
 clin-3/30/00 ebe v2 variables:
@@ -325,24 +460,53 @@ clin-3/30/00 ebe v2 variables:
                           xnpp(iy)=xnpart(ianp,iy)
                        endif
  1007               continue
-                    write(49, 160) iaevt,v2pevt
+                    write(9915, 160) iaevt,v2pevt
                  endif
                  goto 101
               endif
  1008      continue
 clin-11/28/00 for animation:
 clin-8/2015 ctest off turn off parton-t.dat:
-c 101       if(nevent.ge.1) then
- 101       if(nevent.lt.1) then
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$     这里是自己打开的，要想关闭只需要改为(nevent .lt. 1)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+           write(9914,*)"ntmax = ", ntmax, "dt = ", dt
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
+c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
+c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
+c$$$  WW WW     WW WW    RR RR    II     TT     EE
+c$$$  WW        WW      RR  RR   II     TT     EEEEEE
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
+           
+ 101       if(nevent.ge.1) then
               do 110 nt = 1, ntmax
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  时间窗口的下限time1，时间窗口的上限time2.
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
                  time1=dble(nt*dt)
                  time2=dble((nt+1)*dt)
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    先卡去一个时间的窗口。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
                  if (t2time.lt.time2.and.t2time.ge.time1) then
                     if(nt.le.itanim) return
-                    if(ifanim.eq.1) write(11,*) t2time
+                    if(ifanim.eq.1) write(9913,*) t2time
                     iform=0
                     ne1all=0
                     ne1form=0
+c$$$      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  纵向的位置。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
                     do 1009 I=1,mul
 c     Calculate parton coordinates after propagation to current time:
                        gz_now=GZ5(i)+(t2time-FT5(i))*PZ5(i)/E5(i)
@@ -357,11 +521,15 @@ c     write out parton info only for formed ones for animation:
                        if(FT5(I).le.t2time) iform=iform+1
  1009               continue
 clin-8/2015 for animation:
-                    if(ifanim.eq.1) write(11,*) iform
-                    write(93,184) 'evt#,t,np,npformed=',
+
+                    if(ifanim.eq.1) write(9913,*) iform
+                    write(9912,184) 'evt#,t,np,npformed=',
      1                   iaevt,t2time,ne1all,ne1form
  184                format(a20,i7,f8.4,2(1x,i6))
 c
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  纵向的位置。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
                     do 120 I=1,mul
                        if(FT5(I).le.t2time) then
 c     propagate formed partons to current time t2time using parton v:
@@ -377,6 +545,9 @@ c
                           etap=1000000.d0*sign(1.d0,gz_now)
                        endif
 c     calculate other coordinates of the parton:
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$  横向的位置。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
                        if(FT5(I).le.t2time) then
                           gx_now=GX5(i)+(t2time-FT5(i))*PX5(i)/E5(i)
                           gy_now=GY5(i)+(t2time-FT5(i))*PY5(i)/E5(i)
@@ -384,17 +555,21 @@ c     calculate other coordinates of the parton:
                           gx_now=GX5(i)+(t2time-FT5(i))*vxp(i)
                           gy_now=GY5(i)+(t2time-FT5(i))*vyp(i)
                        endif
-                       write(93,185) ITYP5(i),PX5(i),PY5(i),PZ5(i),
+                       write(9912,185) ITYP5(i),PX5(i),PY5(i),PZ5(i),
      1                      XMASS5(i),gx_now,gy_now,ft5(i),etap
 clin-8/2015 for animation:
                        if(ifanim.eq.1.and.FT5(I).le.t2time) then
-                          write(11,180) ITYP5(i),GX5(i),GY5(i),GZ5(i),
+                          write(9913,180) ITYP5(i),GX5(i),GY5(i),GZ5(i),
      1                         FT5(i),PX5(i),PY5(i),PZ5(i),E5(i)
                        endif
  185           format(i3,3(1x,f8.3),1x,f8.4,1x,2(f8.3,1x),f11.4,1x,f8.3)
  120                continue
+
+
                     itanim=nt
                  endif
+
+                 
  110          continue
            endif
 c
@@ -402,10 +577,23 @@ c
  180       format(i6,8(1x,f7.2))
 clin-5/17/01 calculate v2 for active partons (which have not frozen out):
 c     idd=3, called at end of zpc.f:
+
+
+
+
+
+
+           
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$    下面开始idd = 3的那一部分。
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
         else if(idd.eq.3) then        
            do 1010 ianp=1,30
               if(iscatt(ianp).eq.0) tscatt(ianp+1)=tscatt(ianp)
  1010      continue
+
+
+           
            do 350 I=1,mul
 clin-8/2015 to avoid IEEE_DIVIDE_BY_ZERO or IEEE_INVALID:
 c              ypartn=0.5d0*dlog((E5(i)+PZ5(i))
@@ -420,6 +608,7 @@ c     1             /(E5(i)-PZ5(i)+1.d-8))
               endif
               pt2=PX5(I)**2+PY5(I)**2
               iloop=1
+
               if(dabs(ypartn).le.1d0) then
                  iloop=2
                  if(dabs(ypartn).le.0.5d0) then
@@ -465,7 +654,17 @@ c     parton freezeout info taken, proceed to next parton:
                  endif
  325          continue
  350       continue
-c     idd=2: calculate average partonic elliptic flow, called from artdri.f,
+
+
+
+
+
+
+
+
+
+c     idd=2: calculate average partonic elliptic flow, called from
+c     artdri.f,
         else if(idd.eq.2) then
            do 1012 i=1,3
               write(nfile(i),*) '   tsp,   v2p,     v2p2, '//
@@ -596,8 +795,8 @@ clin-5/2012:
 c                 if(v2var0.gt.0) varv2p(iy)=dsqrt(v2var0)
                  if(v2var0.gt.0d0) varv2p(iy)=dsqrt(v2var0)
  1017 continue
-              write(49, 240) 'EBE v2p,v2p(y2),v2p(y1): avg=', v2pavg
-              write(49, 240) 'EBE v2p,v2p(y2),v2p(y1): var=', varv2p
+              write(9915, 240) 'EBE v2p,v2p(y2),v2p(y1): avg=', v2pavg
+              write(9915, 240) 'EBE v2p,v2p(y2),v2p(y1): var=', varv2p
            endif
 clin-8/2015:
 clin-11/28/00 for animation:
