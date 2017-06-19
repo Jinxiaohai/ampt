@@ -1,4 +1,0 @@
- BEAM = P               TARG = N               HINT1(1) =    200.000000    
- BEAM = P               TARG = P               HINT1(1) =    200.000000    
- BEAM = N               TARG = N               HINT1(1) =    200.000000    
- BEAM = N               TARG = P               HINT1(1) =    200.000000    
