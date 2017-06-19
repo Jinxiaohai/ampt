@@ -41,6 +41,9 @@
         data tsp/0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 
      &       1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 
      &       2  , 3,   4,   5,   6,   7,   8,   9,   10,  20,  30/
+
+
+
         if(idd.eq.0) then        
            nfile(1)=60
            nfile(2)=64
@@ -153,21 +156,21 @@
                  etpsf(ii,iy)=0d0
                  etlfrz(ii,iy)=0d0
                  etsfrz(ii,iy)=0d0
-              xnpl(ii,iy)=0d0
-              xnps(ii,iy)=0d0
-              xnplf(ii,iy)=0d0
-              xnpsf(ii,iy)=0d0
-              xnlfrz(ii,iy)=0d0
-              xnsfrz(ii,iy)=0d0
-              v2pl(ii,iy)=0d0
-              v2ps(ii,iy)=0d0
-              v2plf(ii,iy)=0d0
-              v2psf(ii,iy)=0d0
-              s2pl(ii,iy)=0d0
-              s2ps(ii,iy)=0d0
-              s2plf(ii,iy)=0d0
-              s2psf(ii,iy)=0d0
- 1004      continue
+                 xnpl(ii,iy)=0d0
+                 xnps(ii,iy)=0d0
+                 xnplf(ii,iy)=0d0
+                 xnpsf(ii,iy)=0d0
+                 xnlfrz(ii,iy)=0d0
+                 xnsfrz(ii,iy)=0d0
+                 v2pl(ii,iy)=0d0
+                 v2ps(ii,iy)=0d0
+                 v2plf(ii,iy)=0d0
+                 v2psf(ii,iy)=0d0
+                 s2pl(ii,iy)=0d0
+                 s2ps(ii,iy)=0d0
+                 s2plf(ii,iy)=0d0
+                 s2psf(ii,iy)=0d0
+ 1004         continue
  1005   continue
            do 1006 iy=1,3
               v2pevt(iy)=0d0
@@ -178,6 +181,11 @@
               v2psum(iy)=0.d0
               v2p2sm(iy)=0.d0
  1006      continue
+
+
+
+
+
         else if(idd.eq.1) then        
            if(iaevt.ne.iaevtp.and.ianp.eq.31) itanim=0
            t2time = FT5(iscat)
@@ -304,6 +312,16 @@
            endif
  160       format(i10,3(2x,f9.5))
  180       format(i6,8(1x,f7.2))
+
+
+
+
+
+
+
+
+
+
         else if(idd.eq.3) then        
            do 1010 ianp=1,30
               if(iscatt(ianp).eq.0) tscatt(ianp+1)=tscatt(ianp)
@@ -353,6 +371,13 @@
                  endif
  325          continue
  350       continue
+
+
+
+
+
+
+
         else if(idd.eq.2) then
            do 1012 i=1,3
               write(nfile(i),*) '   tsp,   v2p,     v2p2, '//

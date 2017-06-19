@@ -7,18 +7,24 @@
  IDQ =            2  IDQQ =         2101
  IDQ =            1  IDQQ =         2203
  IDQ =            1  IDQQ =         2203
- IDQ =            2  IDQQ =         2101
- IDQ =            2  IDQQ =         2101
+ IDQ =            1  IDQQ =         2203
+ IDQ =            1  IDQQ =         2203
+ IDQ =            2  IDQQ =         2103
+ IDQ =            2  IDQQ =         2103
  IDQ =            1  IDQQ =         2203
  IDQ =            1  IDQQ =         2203
  IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
  IDQ =            1  IDQQ =         2203
  IDQ =            1  IDQQ =         2203
+ IDQ =            1  IDQQ =         2203
+ IDQ =            1  IDQQ =         2203
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2103
  IDQ =            2  IDQQ =         2103
  IDQ =            2  IDQQ =         2101
@@ -29,44 +35,10 @@
  IDQ =            2  IDQQ =         2101
  IDQ =            1  IDQQ =         2203
  IDQ =            1  IDQQ =         2203
- IDQ =            2  IDQQ =         2103
- IDQ =            2  IDQQ =         2103
  IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            2  IDQQ =         2101
- IDQ =            2  IDQQ =         2101
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            2  IDQQ =         2101
- IDQ =            2  IDQQ =         2101
- IDQ =            2  IDQQ =         2101
- IDQ =            2  IDQQ =         2101
- IDQ =            2  IDQQ =         2101
- IDQ =            2  IDQQ =         2101
- IDQ =            2  IDQQ =         2101
- IDQ =            2  IDQQ =         2101
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            2  IDQQ =         2103
- IDQ =            2  IDQQ =         2103
- IDQ =            2  IDQQ =         2101
- IDQ =            2  IDQQ =         2101
- IDQ =            2  IDQQ =         2103
- IDQ =            2  IDQQ =         2103
- IDQ =            2  IDQQ =         2101
- IDQ =            2  IDQQ =         2101
- IDQ =            2  IDQQ =         2103
- IDQ =            2  IDQQ =         2103
- IDQ =            2  IDQQ =         2103
- IDQ =            2  IDQQ =         2103
  IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
  IDQ =            1  IDQQ =         2203
@@ -83,10 +55,14 @@
  IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
  IDQ =            1  IDQQ =         2203
  IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
  IDQ =            1  IDQQ =         2203
@@ -95,14 +71,38 @@
  IDQ =            1  IDQQ =         2203
  IDQ =            1  IDQQ =         2203
  IDQ =            1  IDQQ =         2203
- IDQ =            2  IDQQ =         2103
- IDQ =            2  IDQQ =         2103
  IDQ =            1  IDQQ =         2203
  IDQ =            1  IDQQ =         2203
  IDQ =            1  IDQQ =         2203
  IDQ =            1  IDQQ =         2203
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
  IDQ =            1  IDQQ =         2203
  IDQ =            1  IDQQ =         2203
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            1  IDQQ =         2203
+ IDQ =            1  IDQQ =         2203
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            1  IDQQ =         2203
+ IDQ =            1  IDQQ =         2203
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
  IDQ =            1  IDQQ =         2203
  IDQ =            1  IDQQ =         2203
  IDQ =            1  IDQQ =         2203
@@ -115,28 +115,10 @@
  IDQ =            2  IDQQ =         2101
  IDQ =            1  IDQQ =         2203
  IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
  IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            2  IDQQ =         2101
- IDQ =            2  IDQQ =         2101
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
  IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
  IDQ =            1  IDQQ =         2203
@@ -145,14 +127,32 @@
  IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
- IDQ =            1  IDQQ =         2203
- IDQ =            1  IDQQ =         2203
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
  IDQ =            1  IDQQ =         2203
  IDQ =            1  IDQQ =         2203
  IDQ =            2  IDQQ =         2103
  IDQ =            2  IDQQ =         2103
  IDQ =            1  IDQQ =         2203
  IDQ =            1  IDQQ =         2203
+ IDQ =            1  IDQQ =         2203
+ IDQ =            1  IDQQ =         2203
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            1  IDQQ =         2203
+ IDQ =            1  IDQQ =         2203
+ IDQ =            2  IDQQ =         2101
+ IDQ =            2  IDQQ =         2101
+ IDQ =            1  IDQQ =         2203
+ IDQ =            1  IDQQ =         2203
+ IDQ =            1  IDQQ =         2203
+ IDQ =            1  IDQQ =         2203
+ IDQ =            1  IDQQ =         2203
+ IDQ =            1  IDQQ =         2203
  IDQ =            2  IDQQ =         2101
  IDQ =            2  IDQQ =         2101
  IDQ =            1  IDQQ =         2203
@@ -163,164 +163,14 @@
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
  IDQ =            2  IDQQ =         1103
  IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2103
  IDQ =            2  IDQQ =         1103
  IDQ =            2  IDQQ =         1103
  IDQ =            2  IDQQ =         1103
  IDQ =            2  IDQQ =         1103
  IDQ =            1  IDQQ =         2103
  IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
@@ -333,22 +183,48 @@
  IDQ =            2  IDQQ =         1103
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2103
+ IDQ =            1  IDQQ =         2103
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2103
+ IDQ =            1  IDQQ =         2103
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
  IDQ =            2  IDQQ =         1103
  IDQ =            2  IDQQ =         1103
  IDQ =            1  IDQQ =         2101
@@ -357,10 +233,32 @@
  IDQ =            1  IDQQ =         2103
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2103
+ IDQ =            1  IDQQ =         2103
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            1  IDQQ =         2103
+ IDQ =            1  IDQQ =         2103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
  IDQ =            2  IDQQ =         1103
  IDQ =            2  IDQQ =         1103
  IDQ =            1  IDQQ =         2101
@@ -371,26 +269,128 @@
  IDQ =            2  IDQQ =         1103
  IDQ =            2  IDQQ =         1103
  IDQ =            2  IDQQ =         1103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2101
- IDQ =            1  IDQQ =         2103
- IDQ =            1  IDQQ =         2103
- IDQ =            2  IDQQ =         1103
- IDQ =            2  IDQQ =         1103
  IDQ =            2  IDQQ =         1103
  IDQ =            2  IDQQ =         1103
  IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            1  IDQQ =         2103
+ IDQ =            1  IDQQ =         2103
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2103
+ IDQ =            1  IDQQ =         2103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            1  IDQQ =         2103
+ IDQ =            1  IDQQ =         2103
  IDQ =            2  IDQQ =         1103
  IDQ =            2  IDQQ =         1103
  IDQ =            2  IDQQ =         1103
  IDQ =            2  IDQQ =         1103
  IDQ =            1  IDQQ =         2103
  IDQ =            1  IDQQ =         2103
+ IDQ =            1  IDQQ =         2103
+ IDQ =            1  IDQQ =         2103
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
+ IDQ =            2  IDQQ =         1103
+ IDQ =            2  IDQQ =         1103
+ IDQ =            1  IDQQ =         2101
+ IDQ =            1  IDQQ =         2101
  IDQ =            1  IDQQ =         2101
