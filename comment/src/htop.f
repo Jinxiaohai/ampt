@@ -58,12 +58,12 @@ cc      SAVE /precpa/
       common /para7/ ioscar,nsmbbbar,nsmmeson
       COMMON /AREVT/ IAEVT, IARUN, MISS
       common/snn/efrm,npart1,npart2,epsiPz,epsiPt,PZPROJ,PZTARG
-      SAVE   
+      SAVE
 c
         npar=0
         nnozpc=0
 clin-5b/2008 calculate the number of hadrons to be converted to q/qbar:
-        if((isoft.eq.4.or.isoft.eq.5).and.(ioscar.eq.2.or.ioscar.eq.3)) 
+        if((isoft.eq.4.or.isoft.eq.5).and.(ioscar.eq.2.or.ioscar.eq.3))
      1       then
            nsmbbbar=0
            nsmmeson=0
@@ -85,7 +85,7 @@ c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
 c$$$  WW WW     WW WW    RR RR    II     TT     EE
 c$$$  WW        WW      RR  RR   II     TT     EEEEEE
 c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-           
+
            do i=1,natt
               id=ITYPAR(i)
               idabs=iabs(id)
@@ -99,12 +99,18 @@ c     2             .and.(id.eq.2112.or.id.eq.2212)) then
      2                .or.PZAR(i).lt.(-PZTARG+epsiPz))
      3             .and.(id.eq.2112.or.id.eq.2212)) then
 c     spectator proj or targ nucleons without interactions, do not enter ZPC:
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$       重子
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
               elseif(idabs.gt.1000.and.i2.ne.0) then
 c     baryons to be converted to q/qbar:
                  nsmbbbar=nsmbbbar+1
               elseif((idabs.gt.100.and.idabs.lt.1000)
      1                .or.idabs.gt.10000) then
 c     mesons to be converted to q/qbar:
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$       介子
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
                  nsmmeson=nsmmeson+1
               endif
            enddo
@@ -121,12 +127,12 @@ c$$$  WW WW     WW WW    RR RR    II     TT     EE
 c$$$  WW        WW      RR  RR   II     TT     EEEEEE
 c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
            write(9977,*) iaevt, 3*nsmbbbar+2*nsmmeson
-           write(9977,*) 'event#, total # of initial partons after 
+           write(9977,*) 'event#, total # of initial partons after
      &     string melting'
            write(9977,*) 'String melting converts ',nsmbbbar,
      &      ' baryons ', nsmmeson, 'mesons'
            write(9977,*) 'Total # of initial particles= ',natt
-           write(9977,*) 'Total # of initial particles 
+           write(9977,*) 'Total # of initial particles
      &    (gamma,e,muon,...) not entering ZPC= ',natt-nsmbbbar-nsmmeson
 c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
 c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
@@ -136,14 +142,19 @@ c$$$  WW WW     WW WW    RR RR    II     TT     EE
 c$$$  WW        WW      RR  RR   II     TT     EEEEEE
 c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 c           write(92,*) iaevt, 3*nsmbbbar+2*nsmmeson
-c           write(92,*) ' event#, total # of initial partons after string 
+c           write(92,*) ' event#, total # of initial partons after string
 c     1 melting'
 c           write(92,*) 'String melting converts ',nsmbbbar, ' baryons &'
 c     1, nsmmeson, ' mesons'
 c           write(92,*) 'Total # of initial particles= ',natt
-c           write(92,*) 'Total # of initial particles (gamma,e,muon,...) 
+c           write(92,*) 'Total # of initial particles (gamma,e,muon,...)
 c     1 not entering ZPC= ',natt-nsmbbbar-nsmmeson
         endif
+
+
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
+c$$$      开始新的循环和条件
+c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
 clin-5b/2008-over
         do 100 i=1,natt
            id=ITYPAR(i)
@@ -231,6 +242,7 @@ c       antibaryons:
                  it(2)=-it(2)
               endif
 c     isoft=4or5 decompose diquark flavor it(2) to two quarks it(3)&(4):
+
               if(isoft.eq.4.or.isoft.eq.5) then
                  it(3)=MOD(it(2)/1000,10)
                  it(4)=MOD(it(2)/100,10)
@@ -384,7 +396,7 @@ c$$$  WW   WW   WW   WW   RRRRR    II     TT     EEEEEE
 c$$$  WW WW     WW WW    RR RR    II     TT     EE
 c$$$  WW        WW      RR  RR   II     TT     EEEEEE
 c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
-      write(9935,*)"id, px, py, pz, e, mass, x, y, z, t, 
+      write(9935,*)"id, px, py, pz, e, mass, x, y, z, t,
      & lstrg, lpart, vx, vy, vz, xstrg, ystrg, istrg"
       DO 489 i = 1, NPAR
          write(9935,487)ityp0(i), px0(i), py0(i), pz0(i), e0(i),
@@ -401,7 +413,7 @@ c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
  487  format (i6, 2x,9(f12.4, 2x), 2x,i6, 2x,i6, 2x,5(f12.4, 2x)
      &     2x,i10)
  486  format (i10, 2x,9(f12.4, 2x))
-      
+
 c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
 c$$$  WW       WW        WW RRRRRRR  II TTTTTTTTTT EEEEEE
 c$$$  WW     WW WW     WW  RR  RR   II     TT     EE
@@ -412,15 +424,15 @@ c$$$  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 
-      
-c     
+
+c
 clin-5b/2008:
-      if((isoft.eq.4.or.isoft.eq.5).and.(ioscar.eq.2.or.ioscar.eq.3)) 
+      if((isoft.eq.4.or.isoft.eq.5).and.(ioscar.eq.2.or.ioscar.eq.3))
      1     then
-         if((natt-nsmbbbar-nsmmeson).ne.nnozpc) 
+         if((natt-nsmbbbar-nsmmeson).ne.nnozpc)
      1        write(92,*) 'Problem with the total # of initial particles
      2 (gamma,e,muon,...) not entering ZPC'
-         if((3*nsmbbbar+2*nsmmeson).ne.npar) 
+         if((3*nsmbbbar+2*nsmmeson).ne.npar)
      1        write(92,*) 'Problem with the total # of initial partons
      2 after string melting'
       endif
